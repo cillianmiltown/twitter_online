@@ -1,0 +1,321 @@
+---
+title: "MJAC & #MeToo"
+subtitle: "Tracking the Early Tweets"
+author: "Cillian McHugh"
+date: "8th May 2020"
+bibliography: "../../Research_general/resources/bib/My Library.bib"
+csl: "../../Research_general/apa.csl"
+output:
+  bookdown::html_document2:
+    fig_caption: yes
+    toc: true
+    toc_float:
+      toc_collapsed: false
+    toc_depth: 4
+    number_sections: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{=html}
+<script>
+$(document).ready(function() {
+  $items = $('div#TOC li');
+  $items.each(function(idx) {
+    num_ul = $(this).parentsUntil('#TOC').length;
+    $(this).css({'text-indent': num_ul * 10, 'padding-left': 10});
+  });
+
+});
+</script>
+```
+```{=html}
+<style type="text/css">
+  .table-container {
+  width: 100%;
+  overflow-x: scroll;
+}
+</style>
+```
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(include = FALSE)
+```
+
+```{r loadlibraries}
+install.packages("devtools")
+devtools::install_github("crsh/papaja")
+devtools::install_github("cjbarrie/academictwitteR")
+devtools::install_github("cillianmiltown/R_desnum")
+
+library(papaja)
+
+library(desnum)
+library(tidyverse)
+library(academictwitteR)
+#install.packages("DT")
+library(DT)
+library(kableExtra)
+
+
+
+```
+
+```{r, include=FALSE}
+
+load("twitter_dev_credentials.RData")
+
+```
+
+## 1st October 2017
+
+```{r}
+
+tweets <-
+  get_all_tweets(
+    "#MeToo",
+    "2017-10-01T00:00:00Z",
+    "2017-10-02T00:00:00Z",
+    bearer_token,
+    file = "downloaded_tweets/meetootweets"
+  )
+```
+
+```{r}
+date <- (1)
+number_of_tweets <- length(tweets$text)
+tot1 <- data.frame(date,number_of_tweets)
+tot <- tot1
+```
+
+Total number of tweets = `r number_of_tweets`.
+
+::: {.table-container}
+```{r, include=TRUE}
+datatable(tweets)
+```
+:::
+
+## 2nd October 2017
+
+```{r}
+tweets <-
+  get_all_tweets(
+    "#MeToo",
+    "2017-10-02T00:00:00Z",
+    "2017-10-03T00:00:00Z",
+    bearer_token,
+    file = "downloaded_tweets/meetootweets"
+  )
+```
+
+```{r}
+date <- (2)
+number_of_tweets <- length(tweets$text)
+tot2 <- data.frame(date,number_of_tweets)
+tot <- rbind(tot, tot2)
+```
+
+Total number of tweets = `r number_of_tweets`.
+
+::: {.table-container}
+```{r, include=TRUE}
+datatable(tweets)
+```
+:::
+
+## 3rd October 2017
+
+```{r}
+tweets <-
+  get_all_tweets(
+    "#MeToo",
+    "2017-10-03T00:00:00Z",
+    "2017-10-04T00:00:00Z",
+    bearer_token,
+    file = "downloaded_tweets/meetootweets"
+  )
+```
+
+```{r}
+date <- (3)
+number_of_tweets <- length(tweets$text)
+tot2 <- data.frame(date,number_of_tweets)
+tot <- rbind(tot, tot2)
+```
+
+Total number of tweets = `r number_of_tweets`.
+
+::: {.table-container}
+```{r, include=TRUE}
+datatable(tweets)
+```
+:::
+
+## 4th October 2017
+
+```{r}
+tweets <-
+  get_all_tweets(
+    "#MeToo",
+    "2017-10-04T00:00:00Z",
+    "2017-10-05T00:00:00Z",
+    bearer_token,
+    file = "downloaded_tweets/meetootweets"
+  )
+```
+
+```{r}
+date <- (4)
+number_of_tweets <- length(tweets$text)
+tot2 <- data.frame(date,number_of_tweets)
+tot <- rbind(tot, tot2)
+```
+
+Total number of tweets = `r number_of_tweets`.
+
+::: {.table-container}
+```{r, include=TRUE}
+datatable(tweets)
+```
+:::
+
+## 5th October 2017
+
+```{r}
+tweets <-
+  get_all_tweets(
+    "#MeToo",
+    "2017-10-05T00:00:00Z",
+    "2017-10-06T00:00:00Z",
+    bearer_token,
+    file = "downloaded_tweets/meetootweets"
+  )
+```
+
+```{r}
+date <- (5)
+number_of_tweets <- length(tweets$text)
+tot2 <- data.frame(date,number_of_tweets)
+tot <- rbind(tot, tot2)
+```
+
+Total number of tweets = `r number_of_tweets`.
+
+::: {.table-container}
+```{r, include=TRUE}
+datatable(tweets)
+```
+:::
+
+## 6th October 2017
+
+```{r}
+tweets <-
+  get_all_tweets(
+    "#MeToo",
+    "2017-10-06T00:00:00Z",
+    "2017-10-07T00:00:00Z",
+    bearer_token,
+    file = "downloaded_tweets/meetootweets"
+  )
+```
+
+```{r}
+date <- (6)
+number_of_tweets <- length(tweets$text)
+tot2 <- data.frame(date,number_of_tweets)
+tot <- rbind(tot, tot2)
+```
+
+Total number of tweets = `r number_of_tweets`.
+
+::: {.table-container}
+```{r, include=TRUE}
+datatable(tweets)
+```
+:::
+
+## 7th October 2017
+
+```{r}
+tweets <-
+  get_all_tweets(
+    "#MeToo",
+    "2017-10-07T00:00:00Z",
+    "2017-10-08T00:00:00Z",
+    bearer_token,
+    file = "downloaded_tweets/meetootweets"
+  )
+```
+
+```{r}
+date <- (7)
+number_of_tweets <- length(tweets$text)
+tot2 <- data.frame(date,number_of_tweets)
+tot <- rbind(tot, tot2)
+```
+
+Total number of tweets = `r number_of_tweets`.
+
+::: {.table-container}
+```{r, include=TRUE}
+datatable(tweets)
+```
+:::
+
+## 8th October 2017
+
+```{r}
+tweets <-
+  get_all_tweets(
+    "#MeToo",
+    "2017-10-08T00:00:00Z",
+    "2017-10-09T00:00:00Z",
+    bearer_token,
+    file = "downloaded_tweets/meetootweets"
+  )
+```
+
+```{r}
+date <- (8)
+number_of_tweets <- length(tweets$text)
+tot2 <- data.frame(date,number_of_tweets)
+tot <- rbind(tot, tot2)
+```
+
+Total number of tweets = `r number_of_tweets`.
+
+::: {.table-container}
+```{r, include=TRUE}
+datatable(tweets)
+```
+:::
+
+## 15th October 2017
+
+```{r}
+tweets <-
+  get_all_tweets(
+    "#MeToo",
+    "2017-10-15T00:00:00Z",
+    "2017-10-16T00:00:00Z",
+    bearer_token,
+    file = "downloaded_tweets/meetootweets"
+  )
+```
+
+```{r}
+date <- (15)
+number_of_tweets <- length(tweets$text)
+tot2 <- data.frame(date,number_of_tweets)
+tot <- rbind(tot, tot2)
+```
+
+Total number of tweets = `r number_of_tweets`.
+
+::: {.table-container}
+```{r, include=TRUE}
+datatable(tweets)
+```
+:::

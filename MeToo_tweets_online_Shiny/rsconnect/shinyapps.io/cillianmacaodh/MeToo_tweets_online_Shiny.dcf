@@ -1,0 +1,13 @@
+name: MeToo_tweets_online_Shiny
+title: MeToo_tweets_online_Shiny
+username:
+account: cillianmacaodh
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 5744109
+bundleId: 5623437
+url: https://cillianmacaodh.shinyapps.io/MeToo_tweets_online_Shiny/
+when: 1646002144.04192
+lastSyncTime: 1646002144.04196
+asMultiple: FALSE
+asStatic: FALSE
