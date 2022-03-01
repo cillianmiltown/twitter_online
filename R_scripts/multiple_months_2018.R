@@ -8,19 +8,20 @@ library(data.table)
 rm(list = ls())
 
 
-load("twitter_dev_credentials.RData")
+load("../confidential/twitter_dev_credentials.RData")
+token <- readRDS("../confidential/token.rds")
 
 
 
 
 select_month <- function(x){
-  parent_metoo <- drop_dir("Online Only/R/twitter_data/MeToo")
-  month_online <- drop_dir(parent_metoo$path_display[x])
+  parent_metoo <- drop_dir("Online Only/R/twitter_data/MeToo", dtoken = token)
+  month_online <- drop_dir(parent_metoo$path_display[x], dtoken = token)
   
   within_month_dir <- function(x){
     
-    local_path2 <- paste("downloaded_tweets/temp/",month_online$name[x], sep = "")
-    drop_download(month_online$path_display[x], local_path = local_path2, overwrite = TRUE)
+    local_path2 <- paste("../downloaded_tweets/temp/",month_online$name[x], sep = "")
+    drop_download(month_online$path_display[x], local_path = local_path2, overwrite = TRUE, dtoken = token)
     
     tweets <- readRDS(local_path2)
     tweets <- tweets[which(str_detect(tweets$referenced_tweets, "retweeted")==FALSE),]
@@ -70,7 +71,7 @@ tweets_to_dropbox <- function(day,hashtag,number_of_days=1){
     )
   
   file_name_upload <- paste(x,".rds",sep = "")
-  drop_upload(file_name_upload,"Online Only/R/twitter_data/MeToo/2022_01_January")
+  drop_upload(file_name_upload,"Online Only/R/twitter_data/MeToo/2022_02_February", dtoken = token)
   file.remove(file_name_upload)
 }
 
@@ -83,14 +84,14 @@ loop_metoo_tweets <- function(day){
 
 #tweets_to_dropbox(month[1],"#MeToo",1)
 
-day_for_fun <- "2022-01-01"
+day_for_fun <- "2022-02-01"
 month <- as.Date(day_for_fun) + c(0:31)
 
-sapply(month[1:31], loop_metoo_tweets)
+sapply(month[2:28], loop_metoo_tweets)
 
 
-parent_metoo <- drop_dir("Online Only/R/twitter_data/MeToo")
+parent_metoo <- drop_dir("Online Only/R/twitter_data/MeToo", dtoken = token)
 parent_metoo$path_display
-tweets_2022_01_January  <- select_month(54)
-save(tweets_2022_01_January, file = "../downloaded_tweets/monthly_data/2022_01_January.RData")
+tweets_2022_02_February  <- select_month(55)
+save(tweets_2022_02_February, file = "../downloaded_tweets/monthly_data/2022_02_February.RData")
 

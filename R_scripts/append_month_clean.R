@@ -64,6 +64,7 @@ all_tweets <-
     load("../downloaded_tweets/cleaned_monthly_data/clean_tweets_2021_11_November.RData")
     load("../downloaded_tweets/cleaned_monthly_data/clean_tweets_2021_12_December.RData")
     load("../downloaded_tweets/cleaned_monthly_data/clean_tweets_2022_01_January.RData")
+    load("../downloaded_tweets/cleaned_monthly_data/clean_tweets_2022_02_February.RData")
     
     
     
@@ -124,6 +125,7 @@ all_tweets <-
       ,clean_tweets_2021_11_November
       ,clean_tweets_2021_12_December
       ,clean_tweets_2022_01_January
+      ,clean_tweets_2022_02_February
     )
     all_tweets
   })()
@@ -132,10 +134,12 @@ all_tweets <-
 
 all_clean_tweets_table <- as.data.table(all_tweets)
  
-fwrite(all_clean_tweets_table, "MeToo_tweets/all_clean_tweets.csv")
+#fwrite(all_clean_tweets_table, "../Data_for_ShinyApp/MeToo_tweets/clean/clean_data_for_plot.RData")
+
+#fwrite(all_clean_tweets_table, "MeToo_tweets/all_clean_tweets.csv")
 
 
-save(all_tweets, file = "../downloaded_tweets/all_data/all_clean_tweets.RData")
+save(all_clean_tweets_table, file = "../downloaded_tweets/all_data/all_clean_tweets.RData")
 
 
 ##### set up for plot #####
@@ -157,6 +161,6 @@ y$date <- as.Date(y$date)
 
 y_clean <- y
 
-save(y_clean, file = "MeToo_tweets/clean_data_for_plot.RData")
+save(y_clean, file = "../Data_for_ShinyApp/MeToo_tweets/clean/clean_data_for_plot.RData")
 
 

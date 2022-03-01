@@ -11,7 +11,7 @@ rm(list = ls())
 clean_month <- function(x){
   load("../confidential/twitter_dev_credentials.RData")
   
-  tweet_files <- list.files("downloaded_tweets/monthly_data")
+  tweet_files <- list.files("../downloaded_tweets/monthly_data")
   load(paste0("../downloaded_tweets/monthly_data/",tweet_files[x]))
   tweets_name <- paste0("tweets_", gsub(".RData", "", tweet_files[x]))
   tweets_name_clean <- paste0("clean_tweets_", gsub(".RData", "", tweet_files[x]))
@@ -57,13 +57,13 @@ clean_month <- function(x){
   
 }
 
-list.files("downloaded_tweets/monthly_data")
-length(list.files("downloaded_tweets/monthly_data"))
+list.files("../downloaded_tweets/monthly_data")
+length(list.files("../downloaded_tweets/monthly_data"))
 
 
-#clean_month(2)
+clean_month(54)
 
-lapply(6:24, clean_month)
+#lapply(6:24, clean_month)
 
 #lapply(25:30, clean_month)
 

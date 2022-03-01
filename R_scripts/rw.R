@@ -4,17 +4,21 @@ library(academictwitteR)
 library(jsonlite)
 library(data.table)
 
+rm(list = ls())
+token <- readRDS("../confidential/token.rds")
+
+#token <- drop_auth()
 
 getwd()
 x <- 20
 #select_month <- function(x){
-parent_metoo <- drop_dir("Online Only/R/twitter_data/MeToo")
-month_online <- drop_dir(parent_metoo$path_display[x])
+parent_metoo <- drop_dir("Online Only/R/twitter_data/MeToo", dtoken = token)#, dtoken = token)
+month_online <- drop_dir(parent_metoo$path_display[x], dtoken = token)
 
 #within_month_dir <- function(x){
 
 local_path2 <- paste("downloaded_tweets/temp/",month_online$name[x], sep = "")
-drop_download(month_online$path_display[x], local_path = local_path2, overwrite = TRUE)
+drop_download(month_online$path_display[x], local_path = local_path2, overwrite = TRUE, dtoken = token)
 
 tweets <- readRDS(local_path2)
 tweets <- tweets[which(str_detect(tweets$referenced_tweets, "retweeted")==FALSE),]

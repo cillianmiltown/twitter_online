@@ -367,6 +367,9 @@ server <- function(input, output) {
         if (grepl("2022-01",months_selected)){
             load(url("https://www.dropbox.com/s/w4v0h5qqkbpplxv/2022_01_January.RData?dl=1"))
         }
+        if (grepl("2022-02",months_selected)){
+            load(url("https://www.dropbox.com/s/im9dnmjv2d6324x/2022_02_February.RData?dl=1"))
+        }
         
         
         
@@ -841,6 +844,10 @@ server <- function(input, output) {
         if (sum(grepl("2022-01",months_selected))==1){
             load(url("https://www.dropbox.com/s/dcparb3wdbh66cb/clean_tweets_2022_01_January.RData?dl=1"))
         }
+        if (sum(grepl("2022-02",months_selected))==1){
+            load(url("https://www.dropbox.com/s/k6vkpi6ll3f8v9m/clean_tweets_2022_02_February.RData?dl=1"))
+        }
+        
         
         
         ls(pattern = "clean_tweets*")
