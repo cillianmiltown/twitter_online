@@ -8,6 +8,10 @@ library(data.table)
 rm(list = ls())
 
 
+
+# token <- drop_auth()
+# saveRDS(token, file = "../confidential/token.rds")
+
 load("../confidential/twitter_dev_credentials.RData")
 token <- readRDS("../confidential/token.rds")
 
