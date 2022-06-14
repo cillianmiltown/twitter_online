@@ -133,10 +133,12 @@ all_tweets <-
 
 
 all_clean_tweets_table <- as.data.table(all_tweets)
+df <- as.data.table(all_tweets$text)
  
 #fwrite(all_clean_tweets_table, "../Data_for_ShinyApp/MeToo_tweets/clean/clean_data_for_plot.RData")
 
-#fwrite(all_clean_tweets_table, "MeToo_tweets/all_clean_tweets.csv")
+fwrite(all_clean_tweets_table, "../downloaded_tweets/all_data/all_clean_tweets.csv")
+fwrite(df, "../downloaded_tweets/all_data/just_text.csv")
 
 
 save(all_clean_tweets_table, file = "../downloaded_tweets/all_data/all_clean_tweets.RData")

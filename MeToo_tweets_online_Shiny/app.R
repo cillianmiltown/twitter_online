@@ -1,5 +1,6 @@
 ## app.R ##
 library(shiny)
+#install.packages("shinydashboard")
 library(shinydashboard)
 
 #library(shiny)
@@ -32,7 +33,7 @@ ui <- dashboardPage(
                             width = 3,
                             dateRangeInput('dateRange',
                                            label = 'Select Date Range:',
-                                           start = "2022-01-01", end = "2022-01-31"
+                                           start = "2022-05-01", end = "2022-05-31"
                             ),
                             HTML("Please note: <br>",
                                  "1. Due to large volume of data selecting a narrow date range is recommended<br>",
@@ -77,6 +78,7 @@ ui <- dashboardPage(
                                            label = 'Select Date Range',
                                            start = "2017-09-01", end = Sys.Date()
                             ),
+                            
                             verbatimTextOutput("text_plot"),
                             checkboxInput("clean_plot", "Use Cleaned Data", FALSE
                             ),
@@ -98,7 +100,7 @@ ui <- dashboardPage(
                         box(width = 3,
                             dateRangeInput('dateRange3',
                                            label = 'Select Date Range:',
-                                           start = "2022-01-01", end = "2022-01-31"
+                                           start = "2022-05-01", end = "2022-05-31"
                             ),
                             HTML("Please note: <br>",
                                  "1. Due to large volume of data selecting a narrow date range is recommended<br>",
@@ -370,7 +372,15 @@ server <- function(input, output) {
         if (grepl("2022-02",months_selected)){
             load(url("https://www.dropbox.com/s/im9dnmjv2d6324x/2022_02_February.RData?dl=1"))
         }
-        
+        if (grepl("2022-03",months_selected)){
+            load(url("https://www.dropbox.com/s/0nqf29c2mxqedsh/2022_03_March.RData?dl=1"))
+        }
+        if (grepl("2022-04",months_selected)){
+            load(url("https://www.dropbox.com/s/pxwjlqxuaw7dawn/2022_04_April.RData?dl=1"))
+        }
+        if (grepl("2022-05",months_selected)){
+            load(url("https://www.dropbox.com/s/bnvgjknx2o0xa5s/2022_05_May.RData?dl=1"))
+        }
         
         
         ls(pattern = "tweets_*")
@@ -846,6 +856,15 @@ server <- function(input, output) {
         }
         if (sum(grepl("2022-02",months_selected))==1){
             load(url("https://www.dropbox.com/s/k6vkpi6ll3f8v9m/clean_tweets_2022_02_February.RData?dl=1"))
+        }
+        if (sum(grepl("2022-03",months_selected))==1){
+            load(url("https://www.dropbox.com/s/q5w6d08u3d8vswv/clean_tweets_2022_03_March.RData?dl=1"))
+        }
+        if (sum(grepl("2022-04",months_selected))==1){
+            load(url("https://www.dropbox.com/s/bai8d9ov9w2v5ee/clean_tweets_2022_04_April.RData?dl=1"))
+        }
+        if (sum(grepl("2022-05",months_selected))==1){
+            load(url("https://www.dropbox.com/s/dzlgf0y6qq8o74q/clean_tweets_2022_05_May.RData?dl=1"))
         }
         
         

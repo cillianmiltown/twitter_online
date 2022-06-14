@@ -61,7 +61,7 @@ list.files("../downloaded_tweets/monthly_data")
 length(list.files("../downloaded_tweets/monthly_data"))
 
 
-clean_month(54)
+clean_month(57)
 
 #lapply(6:24, clean_month)
 

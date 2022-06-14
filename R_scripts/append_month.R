@@ -66,6 +66,9 @@ all_tweets <-
     load("../downloaded_tweets/monthly_data/2021_12_December.RData")
     load("../downloaded_tweets/monthly_data/2022_01_January.RData")
     load("../downloaded_tweets/monthly_data/2022_02_February.RData")
+    load("../downloaded_tweets/monthly_data/2022_03_March.RData")
+    load("../downloaded_tweets/monthly_data/2022_04_April.RData")
+    load("../downloaded_tweets/monthly_data/2022_05_May.RData")
     
     
     
@@ -127,6 +130,9 @@ all_tweets <-
       ,tweets_2021_12_December
       ,tweets_2022_01_January
       ,tweets_2022_02_February
+      ,tweets_2022_03_March
+      ,tweets_2022_04_April
+      ,tweets_2022_05_May
     )
     all_tweets
   })()

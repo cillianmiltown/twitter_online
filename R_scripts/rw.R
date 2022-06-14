@@ -54,3 +54,8 @@ load("MeToo_tweets/data_for_plot.RData")
 
 formatC(sum(y$Freq), big.mark=",")
 load(url("https://www.dropbox.com/s/s3t1rqfic21s3pu/clean_tweets_2017_09_September.RData?dl=1"))
+
+x <- month[19]
+file_name_upload <- paste(x,".rds",sep = "")
+drop_upload(file_name_upload,"Online Only/R/twitter_data/MeToo/2022_05_May", dtoken = token)
+file.remove(file_name_upload)
