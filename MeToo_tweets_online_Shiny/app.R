@@ -40,7 +40,7 @@ ui <- dashboardPage(
                                  "2. Selecting a range across months can cause errors<br>",
                                  "&nbsp;"),
                             checkboxGroupInput("cols_select", "Select Columns",
-                                               choiceNames = c("Author ID",
+                                               choiceNames = c(#"Author ID",
                                                                "Tweet ID",
                                                                "Link",
                                                                "Tweet Content",
@@ -49,8 +49,9 @@ ui <- dashboardPage(
                                                                "Date",
                                                                "Language"),
                                                choiceValues = c(
-                                                   "author"       
-                                                   ,"id"
+                                                   #"author"       
+                                                   #,
+                                                   "id"
                                                    ,"link"
                                                    ,"text"                        
                                                    ,"public_metrics"             
@@ -107,7 +108,7 @@ ui <- dashboardPage(
                                  "2. Selecting a range across months can cause errors<br>",
                                  "&nbsp;"),
                             checkboxGroupInput("cols_select2", "Select Columns",
-                                               choiceNames = c("Author ID",
+                                               choiceNames = c(#"Author ID",
                                                                "Tweet ID",
                                                                "Link",
                                                                "Tweet Content",
@@ -116,8 +117,9 @@ ui <- dashboardPage(
                                                                "Date",
                                                                "Language"),
                                                choiceValues = c(
-                                                   "author"       
-                                                   ,"id"
+                                                   #"author"       
+                                                   #,
+                                                 "id"
                                                    ,"link"
                                                    ,"text"                        
                                                    ,"public_metrics"             

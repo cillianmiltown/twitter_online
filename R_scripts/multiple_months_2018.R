@@ -7,14 +7,14 @@ library(data.table)
 
 rm(list = ls())
 
-#token <- drop_auth(new_user = TRUE)
-#saveRDS(token, file = "../confidential/token.rds")
+token <- drop_auth(new_user = TRUE)
+saveRDS(token, file = "../confidential/token.rds")
 
 #token <- drop_auth()
 #token$credentials
 
 
-load("../confidential/twitter_dev_credentials.RData")
+#load("../confidential/twitter_dev_credentials.RData")
 #readRDS("../confidential/token.rds")
 token <- readRDS("../confidential/token.rds")
 
@@ -78,7 +78,7 @@ tweets_to_dropbox <- function(day,hashtag,number_of_days=1){
     )
   
   file_name_upload <- paste(x,".rds",sep = "")
-  drop_upload(file_name_upload,"Online Only/R/twitter_data/MeToo/2022_05_May", dtoken = token)
+  drop_upload(file_name_upload,"Online Only/R/twitter_data/MeToo/2022_08_August", dtoken = token)
   file.remove(file_name_upload)
 }
 
@@ -91,14 +91,14 @@ loop_metoo_tweets <- function(day){
 
 #tweets_to_dropbox(month[1],"#MeToo",1)
 
-day_for_fun <- "2022-05-01"
-month <- as.Date(day_for_fun) + c(0:30)
+day_for_fun <- "2022-08-01"
+month <- as.Date(day_for_fun) + c(0:31)
 
-sapply(month[20:30], loop_metoo_tweets)
+sapply(month[1:31], loop_metoo_tweets)
 
 
 parent_metoo <- drop_dir("Online Only/R/twitter_data/MeToo", dtoken = token)
 parent_metoo$path_display
-tweets_2022_05_May  <- select_month(58)
-save(tweets_2022_05_May, file = "../downloaded_tweets/monthly_data/2022_05_May.RData")
+tweets_2022_08_August  <- select_month(61)
+save(tweets_2022_08_August, file = "../downloaded_tweets/monthly_data/2022_08_August.RData")
 
