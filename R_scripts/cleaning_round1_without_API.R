@@ -68,6 +68,10 @@ length(list.files("../downloaded_tweets/monthly_data"))
 # 61 and first batch of the day , check number
 clean_month(66)
 
+list.files("../downloaded_tweets/cleaned_monthly_data")
+load("../downloaded_tweets/cleaned_monthly_data/clean_tweets_2023_02_February.RData")
+load("../downloaded_tweets/cleaned_monthly_data/clean_tweets_2023_01_January.RData")
+
 #lapply(6:24, clean_month)
 
 #lapply(25:30, clean_month)
