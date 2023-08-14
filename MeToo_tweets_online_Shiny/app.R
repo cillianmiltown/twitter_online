@@ -33,7 +33,7 @@ ui <- dashboardPage(
                             width = 3,
                             dateRangeInput('dateRange',
                                            label = 'Select Date Range:',
-                                           start = "2022-05-01", end = "2022-05-31"
+                                           start = "2023-02-01", end = "2023-02-28"
                             ),
                             HTML("Please note: <br>",
                                  "1. Due to large volume of data selecting a narrow date range is recommended<br>",
@@ -77,7 +77,7 @@ ui <- dashboardPage(
                         box(width = 3,
                             dateRangeInput('dateRange2',
                                            label = 'Select Date Range',
-                                           start = "2017-09-01", end = Sys.Date()
+                                           start = "2017-09-01", end = "2023-02-28"
                             ),
                             
                             verbatimTextOutput("text_plot"),
@@ -101,7 +101,7 @@ ui <- dashboardPage(
                         box(width = 3,
                             dateRangeInput('dateRange3',
                                            label = 'Select Date Range:',
-                                           start = "2022-05-01", end = "2022-05-31"
+                                           start = "2023-02-01", end = "2023-02-28"
                             ),
                             HTML("Please note: <br>",
                                  "1. Due to large volume of data selecting a narrow date range is recommended<br>",
@@ -382,6 +382,36 @@ server <- function(input, output) {
         }
         if (grepl("2022-05",months_selected)){
             load(url("https://osf.io/rh2ga/download"))
+        }
+        if (grepl("2022-06",months_selected)){
+          load(url("https://osf.io/mvbr7/download"))
+        }
+        if (grepl("2022-07",months_selected)){
+          load(url("https://osf.io/gkz9t/download"))
+        }
+        if (grepl("2022-08",months_selected)){
+          load(url("https://osf.io/eqtu4/download"))
+        }
+        if (grepl("2022-09",months_selected)){
+          load(url("https://osf.io/9t6uq/download"))
+        }
+        if (grepl("2022-10",months_selected)){
+          load(url("https://osf.io/52exq/download"))
+        }
+        if (grepl("2022-11",months_selected)){
+          load(url("https://osf.io/gfba5/download"))
+        }
+        if (grepl("2022-12",months_selected)){
+          load(url("https://osf.io/5k3du/download"))
+        }
+        
+        
+        
+        if (grepl("2023-01",months_selected)){
+          load(url("https://osf.io/2e79r/download"))
+        }
+        if (grepl("2023-02",months_selected)){
+          load(url("https://osf.io/2g3rm/download"))
         }
         
         
@@ -867,6 +897,36 @@ server <- function(input, output) {
         }
         if (sum(grepl("2022-05",months_selected))==1){
             load(url("https://osf.io/npjyv/download"))
+        }
+        if (grepl("2022-06",months_selected)){
+          load(url("https://osf.io/5m89c/download"))
+        }
+        if (grepl("2022-07",months_selected)){
+          load(url("https://osf.io/25k3r/download"))
+        }
+        if (grepl("2022-08",months_selected)){
+          load(url("https://osf.io/z7dwv/download"))
+        }
+        if (grepl("2022-09",months_selected)){
+          load(url("https://osf.io/w7hqz/download"))
+        }
+        if (grepl("2022-10",months_selected)){
+          load(url("https://osf.io/2fh4w/download"))
+        }
+        if (grepl("2022-11",months_selected)){
+          load(url("https://osf.io/uj3q5/download"))
+        }
+        if (grepl("2022-12",months_selected)){
+          load(url("https://osf.io/eszp5/download"))
+        }
+        
+        
+        
+        if (grepl("2023-01",months_selected)){
+          load(url("https://osf.io/2g6zc/download"))
+        }
+        if (grepl("2023-02",months_selected)){
+          load(url("https://osf.io/px2n3/download"))
         }
         
         

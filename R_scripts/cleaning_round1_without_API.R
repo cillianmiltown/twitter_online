@@ -1,5 +1,5 @@
-#### This is depreciated because it relies on the Academic API to look up user information ####
-# it was used to do first clean on tweets from September 2017 to December 2022
+#### This is not as thorough because the API is no longer working ####
+# This was used to clean January and February 2023
 
 
 
@@ -14,7 +14,7 @@ library(tidytext)
 rm(list = ls())
 
 clean_month <- function(x){
-  load("../confidential/twitter_dev_credentials.RData")
+  #load("../confidential/twitter_dev_credentials.RData")
   
   tweet_files <- list.files("../downloaded_tweets/monthly_data")
   load(paste0("../downloaded_tweets/monthly_data/",tweet_files[x]))
@@ -36,25 +36,25 @@ clean_month <- function(x){
     ungroup() %>% 
     mutate(is_duplicated = dup_id > 1)
   
-  tweets <- tweets[which(tweets$dup_id==1),]
-  
-  test <- get_user_profile(tweets$author_id,bearer_token)
-  #test1 <- test
-  
-  test <-
-    test[which(test$public_metrics$following_count/test$public_metrics$followers_count!="NaN"),]
-  test <-
-    test[which(test$public_metrics$following_count/test$public_metrics$followers_count<100),]
-  test <-
-    test[which(test$profile_image_url!="https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png"),]
+  # tweets <- tweets[which(tweets$dup_id==1),]
+  # 
+  # test <- get_user_profile(tweets$author_id,bearer_token)
+  # #test1 <- test
+  # 
+  # test <-
+  #   test[which(test$public_metrics$following_count/test$public_metrics$followers_count!="NaN"),]
+  # test <-
+  #   test[which(test$public_metrics$following_count/test$public_metrics$followers_count<100),]
+  # test <-
+  #   test[which(test$profile_image_url!="https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png"),]
   tweets <- rename(tweets, date = `date <- as.Date(created_at)`)
-  
-  tweets <- tweets %>%
-    filter(author_id %in% test$id)
+  # 
+  # tweets <- tweets %>%
+  #   filter(author_id %in% test$id)
   assign(eval(tweets_name_clean), tweets)
-  
-  rm(test, tweets, tweet_files,
-     bearer_token, consumer_key, consumer_secret)
+  # 
+  # rm(test, tweets, tweet_files,
+  #    bearer_token, consumer_key, consumer_secret)
   rm(list = ls()[ls()!=eval(tweets_name_clean)&ls()!="tweets_name_clean"])
   
   save(list = ls(), file = paste("../downloaded_tweets/cleaned_monthly_data/", tweets_name_clean, ".RData", sep = ""))
@@ -66,7 +66,7 @@ list.files("../downloaded_tweets/monthly_data")
 length(list.files("../downloaded_tweets/monthly_data"))
 
 # 61 and first batch of the day , check number
-clean_month(64)
+clean_month(66)
 
 #lapply(6:24, clean_month)
 

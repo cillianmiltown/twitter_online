@@ -77,6 +77,7 @@ all_tweets <-
     load("../downloaded_tweets/monthly_data/2022_11_November.RData")
     load("../downloaded_tweets/monthly_data/2022_12_December.RData")
     load("../downloaded_tweets/monthly_data/2023_01_January.RData")
+    load("../downloaded_tweets/monthly_data/2023_02_February.RData")
     
     
     
@@ -148,6 +149,7 @@ all_tweets <-
       ,tweets_2022_11_November
       ,tweets_2022_12_December
       ,tweets_2023_01_January
+      ,tweets_2023_02_February
     )
     all_tweets
   })()

@@ -7,6 +7,14 @@ library(data.table)
 rm(list = ls())
 
 
+
+load("../downloaded_tweets/cleaned_monthly_data/clean_tweets_2022_12_December.RData")
+load("../downloaded_tweets/cleaned_monthly_data/clean_tweets_2023_01_January.RData")
+
+cbind.data.frame(
+  variable.names(clean_tweets_2022_12_December)
+  ,variable.names(clean_tweets_2023_01_January))
+
 all_tweets <-
   (function(){
 
@@ -65,6 +73,18 @@ all_tweets <-
     load("../downloaded_tweets/cleaned_monthly_data/clean_tweets_2021_12_December.RData")
     load("../downloaded_tweets/cleaned_monthly_data/clean_tweets_2022_01_January.RData")
     load("../downloaded_tweets/cleaned_monthly_data/clean_tweets_2022_02_February.RData")
+    load("../downloaded_tweets/cleaned_monthly_data/clean_tweets_2022_03_March.RData")
+    load("../downloaded_tweets/cleaned_monthly_data/clean_tweets_2022_04_April.RData")
+    load("../downloaded_tweets/cleaned_monthly_data/clean_tweets_2022_05_May.RData")
+    load("../downloaded_tweets/cleaned_monthly_data/clean_tweets_2022_06_June.RData")
+    load("../downloaded_tweets/cleaned_monthly_data/clean_tweets_2022_07_July.RData")
+    load("../downloaded_tweets/cleaned_monthly_data/clean_tweets_2022_08_August.RData")
+    load("../downloaded_tweets/cleaned_monthly_data/clean_tweets_2022_09_September.RData")
+    load("../downloaded_tweets/cleaned_monthly_data/clean_tweets_2022_10_October.RData")
+    load("../downloaded_tweets/cleaned_monthly_data/clean_tweets_2022_11_November.RData")
+    load("../downloaded_tweets/cleaned_monthly_data/clean_tweets_2022_12_December.RData")
+    load("../downloaded_tweets/cleaned_monthly_data/clean_tweets_2023_01_January.RData")
+    load("../downloaded_tweets/cleaned_monthly_data/clean_tweets_2023_02_February.RData")
     
     
     
@@ -126,6 +146,18 @@ all_tweets <-
       ,clean_tweets_2021_12_December
       ,clean_tweets_2022_01_January
       ,clean_tweets_2022_02_February
+      ,clean_tweets_2022_03_March
+      ,clean_tweets_2022_04_April
+      ,clean_tweets_2022_05_May
+      ,clean_tweets_2022_06_June
+      ,clean_tweets_2022_07_July
+      ,clean_tweets_2022_08_August
+      ,clean_tweets_2022_09_September
+      ,clean_tweets_2022_10_October
+      ,clean_tweets_2022_11_November
+      ,clean_tweets_2022_12_December
+      ,clean_tweets_2023_01_January
+      ,clean_tweets_2023_02_February
     )
     all_tweets
   })()
