@@ -1,22 +1,22 @@
-library("rdrop2")
-library(tidyverse)
-library(academictwitteR)
-library(jsonlite)
-library(data.table)
+# library("rdrop2")
+# library(tidyverse)
+# library(academictwitteR)
+# library(jsonlite)
+# library(data.table)
 
 
-rm(list = ls())
-
-token <- drop_auth(new_user = TRUE)
-saveRDS(token, file = "../confidential/token.rds")
-
-#token <- drop_auth()
-#token$credentials
-
-
-#load("../confidential/twitter_dev_credentials.RData")
-#readRDS("../confidential/token.rds")
-token <- readRDS("../confidential/token.rds")
+# rm(list = ls())
+# 
+# token <- drop_auth(new_user = TRUE)
+# saveRDS(token, file = "../confidential/token.rds")
+# 
+# #token <- drop_auth()
+# #token$credentials
+# 
+# 
+# #load("../confidential/twitter_dev_credentials.RData")
+# #readRDS("../confidential/token.rds")
+# token <- readRDS("../confidential/token.rds")
 
 
 
@@ -78,7 +78,7 @@ tweets_to_dropbox <- function(day,hashtag,number_of_days=1){
     )
   
   file_name_upload <- paste(x,".rds",sep = "")
-  drop_upload(file_name_upload,"Online Only/R/twitter_data/MeToo/2022_08_August", dtoken = token)
+  drop_upload(file_name_upload,"Online Only/R/twitter_data/MeToo/2023_02_February", dtoken = token)
   file.remove(file_name_upload)
 }
 
@@ -91,14 +91,14 @@ loop_metoo_tweets <- function(day){
 
 #tweets_to_dropbox(month[1],"#MeToo",1)
 
-day_for_fun <- "2022-08-01"
-month <- as.Date(day_for_fun) + c(0:31)
+day_for_fun <- "2023-02-01"
+month <- as.Date(day_for_fun) + c(0:28)
 
-sapply(month[1:31], loop_metoo_tweets)
+sapply(month[1:11], loop_metoo_tweets)
 
 
 parent_metoo <- drop_dir("Online Only/R/twitter_data/MeToo", dtoken = token)
 parent_metoo$path_display
-tweets_2022_08_August  <- select_month(61)
-save(tweets_2022_08_August, file = "../downloaded_tweets/monthly_data/2022_08_August.RData")
+tweets_2023_02_February  <- select_month(67)
+save(tweets_2023_02_February, file = "../downloaded_tweets/monthly_data/2023_02_February.RData")
 

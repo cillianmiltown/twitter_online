@@ -69,7 +69,14 @@ all_tweets <-
     load("../downloaded_tweets/monthly_data/2022_03_March.RData")
     load("../downloaded_tweets/monthly_data/2022_04_April.RData")
     load("../downloaded_tweets/monthly_data/2022_05_May.RData")
-    
+    load("../downloaded_tweets/monthly_data/2022_06_June.RData")
+    load("../downloaded_tweets/monthly_data/2022_07_July.RData")
+    load("../downloaded_tweets/monthly_data/2022_08_August.RData")
+    load("../downloaded_tweets/monthly_data/2022_09_September.RData")
+    load("../downloaded_tweets/monthly_data/2022_10_October.RData")
+    load("../downloaded_tweets/monthly_data/2022_11_November.RData")
+    load("../downloaded_tweets/monthly_data/2022_12_December.RData")
+    load("../downloaded_tweets/monthly_data/2023_01_January.RData")
     
     
     
@@ -133,6 +140,14 @@ all_tweets <-
       ,tweets_2022_03_March
       ,tweets_2022_04_April
       ,tweets_2022_05_May
+      ,tweets_2022_06_June
+      ,tweets_2022_07_July
+      ,tweets_2022_08_August
+      ,tweets_2022_09_September
+      ,tweets_2022_10_October
+      ,tweets_2022_11_November
+      ,tweets_2022_12_December
+      ,tweets_2023_01_January
     )
     all_tweets
   })()

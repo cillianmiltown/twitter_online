@@ -60,8 +60,8 @@ clean_month <- function(x){
 list.files("../downloaded_tweets/monthly_data")
 length(list.files("../downloaded_tweets/monthly_data"))
 
-
-clean_month(57)
+# 61 and first batch of the day , check number
+clean_month(64)
 
 #lapply(6:24, clean_month)
 

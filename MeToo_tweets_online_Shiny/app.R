@@ -202,186 +202,186 @@ server <- function(input, output) {
         
         ## 2017 ##
         if (grepl("2017-09",months_selected)){
-            load(url("https://www.dropbox.com/s/gdbmdy2jjrzci5o/2017_09_September.RData?dl=1"))
+            load(url("https://osf.io/uwhde/download"))
         }
         if (grepl("2017-10",months_selected)){
-            load(url("https://www.dropbox.com/s/a16weqp01odm5ge/2017_10_October.RData?dl=1"))
+            load(url("https://osf.io/8yh6w/download"))
         }
         if (grepl("2017-11",months_selected)){
-            load(url("https://www.dropbox.com/s/f0sakjqcr0zn8hk/2017_11_November.RData?dl=1"))
+            load(url("https://osf.io/e6sx7/download"))
         }
         if (grepl("2017-12",months_selected)){
-            load(url("https://www.dropbox.com/s/yet9s1mfpqmoh4l/2017_12_December.RData?dl=1"))
+            load(url("https://osf.io/rzmb8/download"))
         }
         
         ## 2018 ##
         if (grepl("2018-01",months_selected)){    
-            load(url("https://www.dropbox.com/s/5f5ofj2jrh18rjn/2018_01_January.RData?dl=1"))
+            load(url("https://osf.io/xz8h3/download"))
         }
         if (grepl("2018-02",months_selected)){
-            load(url("https://www.dropbox.com/s/2zjdqljkwt7pr91/2018_02_February.RData?dl=1"))
+            load(url("https://osf.io/2dp89/download"))
         }
         if (grepl("2018-03",months_selected)){
-            load(url("https://www.dropbox.com/s/cs0uardtxltv4af/2018_03_March.RData?dl=1"))
+            load(url("https://osf.io/v42c5/download"))
         }
         if (grepl("2018-04",months_selected)){
-            load(url("https://www.dropbox.com/s/5vplmozyhdj8fge/2018_04_April.RData?dl=1"))
+            load(url("https://osf.io/54cag/download"))
         }
         if (grepl("2018-05",months_selected)){
-            load(url("https://www.dropbox.com/s/ueonivxpmairlrz/2018_05_May.RData?dl=1"))
+            load(url("https://osf.io/gvfm6/download"))
         }
         if (grepl("2018-06",months_selected)){
-            load(url("https://www.dropbox.com/s/7hc6lihhy5e57ex/2018_06_June.RData?dl=1"))
+            load(url("https://osf.io/bpx9n/download"))
         }
         if (grepl("2018-07",months_selected)){
-            load(url("https://www.dropbox.com/s/ob2vcxtli6r6rtb/2018_07_July.RData?dl=1"))
+            load(url("https://osf.io/zav63/download"))
         }
         if (grepl("2018-08",months_selected)){
-            load(url("https://www.dropbox.com/s/jeerhose0giog2l/2018_08_August.RData?dl=1"))
+            load(url("https://osf.io/pxk8f/download"))
         }
         if (grepl("2018-09",months_selected)){
-            load(url("https://www.dropbox.com/s/lxce7va77ktzk0b/2018_09_September.RData?dl=1"))
+            load(url("https://osf.io/z689a/download"))
         }
         if (grepl("2018-10",months_selected)){
-            load(url("https://www.dropbox.com/s/qe5jnyl3nia7yqn/2018_10_October.RData?dl=1"))
+            load(url("https://osf.io/tc3kj/download"))
         }
         if (grepl("2018-11",months_selected)){
-            load(url("https://www.dropbox.com/s/77mtttrhck3tow2/2018_11_November.RData?dl=1"))
+            load(url("https://osf.io/xscuz/download"))
         }
         if (grepl("2018-12",months_selected)){
-            load(url("https://www.dropbox.com/s/5jt9xqub6xbvxjx/2018_12_December.RData?dl=1"))
+            load(url("https://osf.io/68efp/download"))
         }
         
         ## 2019 ##
         if (grepl("2019-01",months_selected)){
-            load(url("https://www.dropbox.com/s/56mkvmn27b7r912/2019_01_January.RData?dl=1"))
+            load(url("https://osf.io/9s6vj/download"))
         }
         if (grepl("2019-02",months_selected)){
-            load(url("https://www.dropbox.com/s/hjpbgbupgogk52i/2019_02_February.RData?dl=1"))
+            load(url("https://osf.io/49b7w/download"))
         }
         if (grepl("2019-03",months_selected)){
-            load(url("https://www.dropbox.com/s/u2fk8phcpx5b1qy/2019_03_March.RData?dl=1"))
+            load(url("https://osf.io/7ufv9/download"))
         }
         if (grepl("2019-04",months_selected)){
-            load(url("https://www.dropbox.com/s/sr1ldyvvfravvwx/2019_04_April.RData?dl=1"))
+            load(url("https://osf.io/8d9cx/download"))
         }
         if (grepl("2019-05",months_selected)){
-            load(url("https://www.dropbox.com/s/td40bvmzhf53i1j/2019_05_May.RData?dl=1"))
+            load(url("https://osf.io/b5xqj/download"))
         }
         if (grepl("2019-06",months_selected)){
-            load(url("https://www.dropbox.com/s/m2rtkl2vf8v8qet/2019_06_June.RData?dl=1"))
+            load(url("https://osf.io/g72np/download"))
         }
         if (grepl("2019-07",months_selected)){
-            load(url("https://www.dropbox.com/s/53vnonfcs3p7y0l/2019_07_July.RData?dl=1"))
+            load(url("https://osf.io/fntbv/download"))
         }
         if (grepl("2019-08",months_selected)){
-            load(url("https://www.dropbox.com/s/l6bc10xorcfi3ml/2019_08_August.RData?dl=1"))
+            load(url("https://osf.io/dvf7b/download"))
         }
         if (grepl("2019-09",months_selected)){
-            load(url("https://www.dropbox.com/s/cswazvvxzbnwufo/2019_09_September.RData?dl=1"))
+            load(url("https://osf.io/pjrdw/download"))
         }
         if (grepl("2019-10",months_selected)){
-            load(url("https://www.dropbox.com/s/iqnxo6pmvqsgebt/2019_10_October.RData?dl=1"))
+            load(url("https://osf.io/v6xet/download"))
         }
         if (grepl("2019-11",months_selected)){
-            load(url("https://www.dropbox.com/s/lbo6aa19ftmiozv/2019_11_November.RData?dl=1"))
+            load(url("https://osf.io/56adb/download"))
         }
         if (grepl("2019-12",months_selected)){
-            load(url("https://www.dropbox.com/s/thsok1vgjd2scrw/2019_12_December.RData?dl=1"))
+            load(url("https://osf.io/k486z/download"))
         }
         
         ## 2020 ##
         if (grepl("2020-01",months_selected)){
-            load(url("https://www.dropbox.com/s/bcjeeg3pdh20aiu/2020_01_January.RData?dl=1"))
+            load(url("https://osf.io/r9v8y/download"))
         }
         if (grepl("2020-02",months_selected)){
-            load(url("https://www.dropbox.com/s/6i6wp4i1xjk89r5/2020_02_February.RData?dl=1"))
+            load(url("https://osf.io/u638b/download"))
         }
         if (grepl("2020-03",months_selected)){
-            load(url("https://www.dropbox.com/s/axwf0d0fscq5uy3/2020_03_March.RData?dl=1"))
+            load(url("https://osf.io/4h6u3/download"))
         }
         if (grepl("2020-04",months_selected)){
-            load(url("https://www.dropbox.com/s/7qbvu1odoflk3ws/2020_04_April.RData?dl=1"))
+            load(url("https://osf.io/kxvrd/download"))
         }
         if (grepl("2020-05",months_selected)){
-            load(url("https://www.dropbox.com/s/gt5u0kqlk3fz2ou/2020_05_May.RData?dl=1"))
+            load(url("https://osf.io/9jxps/download"))
         }
         if (grepl("2020-06",months_selected)){
-            load(url("https://www.dropbox.com/s/evdoc0keab80hy3/2020_06_June.RData?dl=1"))
+            load(url("https://osf.io/26hkj/download"))
         }
         if (grepl("2020-07",months_selected)){
-            load(url("https://www.dropbox.com/s/1oy95z7g4vebkom/2020_07_July.RData?dl=1"))
+            load(url("https://osf.io/djhs3/download"))
         }
         if (grepl("2020-08",months_selected)){
-            load(url("https://www.dropbox.com/s/ks09weqeir5l30j/2020_08_August.RData?dl=1"))
+            load(url("https://osf.io/bvkwq/download"))
         }
         if (grepl("2020-09",months_selected)){
-            load(url("https://www.dropbox.com/s/iidh15pa8o46yh3/2020_09_September.RData?dl=1"))
+            load(url("https://osf.io/msbeh/download"))
         }
         if (grepl("2020-10",months_selected)){
-            load(url("https://www.dropbox.com/s/5azswxj8gxwjfhk/2020_10_October.RData?dl=1"))
+            load(url("https://osf.io/qrw74/download"))
         }
         if (grepl("2020-11",months_selected)){
-            load(url("https://www.dropbox.com/s/ja9h5ydniy1k2dn/2020_11_November.RData?dl=1"))
+            load(url("https://osf.io/ns2xk/download"))
         }
         if (grepl("2020-12",months_selected)){
-            load(url("https://www.dropbox.com/s/1oj1iomtu4rpeov/2020_12_December.RData?dl=1"))
+            load(url("https://osf.io/8ry59/download"))
         }
         
         
         
         if (grepl("2021-01",months_selected)){
-            load(url("https://www.dropbox.com/s/6jlrhaflygznnta/2021_01_January.RData?dl=1"))
+            load(url("https://osf.io/gquxb/download"))
         }
         if (grepl("2021-02",months_selected)){
-            load(url("https://www.dropbox.com/s/shoypto4xorrq55/2021_02_February.RData?dl=1"))
+            load(url("https://osf.io/pjdxk/download"))
         }
         if (grepl("2021-03",months_selected)){
-            load(url("https://www.dropbox.com/s/vu9bvf69xhluq2l/2021_03_March.RData?dl=1"))
+            load(url("https://osf.io/f4za3/download"))
         }
         if (grepl("2021-04",months_selected)){
-            load(url("https://www.dropbox.com/s/luxe3cm4twvpa63/2021_04_April.RData?dl=1"))
+            load(url("https://osf.io/p7g6w/download"))
         }
         if (grepl("2021-05",months_selected)){
-            load(url("https://www.dropbox.com/s/8hulzoi82xtjavw/2021_05_May.RData?dl=1"))
+            load(url("https://osf.io/uxyvt/download"))
         }
         if (grepl("2021-06",months_selected)){
-            load(url("https://www.dropbox.com/s/jiq1vobgfbgb1u2/2021_06_June.RData?dl=1"))
+            load(url("https://osf.io/2n6zv/download"))
         }
         if (grepl("2021-07",months_selected)){
-            load(url("https://www.dropbox.com/s/dx49kd4s77cgcn0/2021_07_July.RData?dl=1"))
+            load(url("https://osf.io/hb5nx/download"))
         }
         if (grepl("2021-08",months_selected)){
-            load(url("https://www.dropbox.com/s/u9z7otbqwkftogm/2021_08_August.RData?dl=1"))
+            load(url("https://osf.io/dwgp9/download"))
         }
         if (grepl("2021-09",months_selected)){
-            load(url("https://www.dropbox.com/s/abjf2lqdp5ndoth/2021_09_September.RData?dl=1"))
+            load(url("https://osf.io/5zty4/download"))
         }
         if (grepl("2021-10",months_selected)){
-            load(url("https://www.dropbox.com/s/67273fq7k5qbc0a/2021_10_October.RData?dl=1"))
+            load(url("https://osf.io/s28w5/download"))
         }
         if (grepl("2021-11",months_selected)){
-            load(url("https://www.dropbox.com/s/jjpa1l7g9kixv04/2021_11_November.RData?dl=1"))
+            load(url("https://osf.io/756pt/download"))
         }
         if (grepl("2021-12",months_selected)){
-            load(url("https://www.dropbox.com/s/kza2rj4do6zu484/2021_12_December.RData?dl=1"))
+            load(url("https://osf.io/amjqk/download"))
         }
         
         
         if (grepl("2022-01",months_selected)){
-            load(url("https://www.dropbox.com/s/w4v0h5qqkbpplxv/2022_01_January.RData?dl=1"))
+            load(url("https://osf.io/9ebmf/download"))
         }
         if (grepl("2022-02",months_selected)){
-            load(url("https://www.dropbox.com/s/im9dnmjv2d6324x/2022_02_February.RData?dl=1"))
+            load(url("https://osf.io/yxcm5/download"))
         }
         if (grepl("2022-03",months_selected)){
-            load(url("https://www.dropbox.com/s/0nqf29c2mxqedsh/2022_03_March.RData?dl=1"))
+            load(url("https://osf.io/kdjs7/download"))
         }
         if (grepl("2022-04",months_selected)){
-            load(url("https://www.dropbox.com/s/pxwjlqxuaw7dawn/2022_04_April.RData?dl=1"))
+            load(url("https://osf.io/yqd4b/download"))
         }
         if (grepl("2022-05",months_selected)){
-            load(url("https://www.dropbox.com/s/bnvgjknx2o0xa5s/2022_05_May.RData?dl=1"))
+            load(url("https://osf.io/rh2ga/download"))
         }
         
         
@@ -483,11 +483,11 @@ server <- function(input, output) {
         ) 
         {
             rm(y)
-            load(url("https://www.dropbox.com/s/jvo6zk6ciphowbc/clean_data_for_plot.RData?dl=1"))
+            load(url("https://osf.io/8kt4x/download"))
             y <- y_clean
         } else {
             rm(y)
-            load(url("https://www.dropbox.com/s/jaa8klpmvdxu9sr/data_for_plot.RData?dl=1"))
+            load(url("https://osf.io/6tme5/download"))
         }
         
         start_date <- make_start_date2()
@@ -545,11 +545,11 @@ server <- function(input, output) {
         ) 
         {
             rm(y)
-            load(url("https://www.dropbox.com/s/jvo6zk6ciphowbc/clean_data_for_plot.RData?dl=1"))
+            load(url("https://osf.io/8kt4x/download"))
             y <- y_clean
         } else {
             rm(y)
-            load(url("https://www.dropbox.com/s/jaa8klpmvdxu9sr/data_for_plot.RData?dl=1"))
+            load(url("https://osf.io/6tme5/download"))
         }
         
         start_date <- make_start_date2()
@@ -569,7 +569,7 @@ server <- function(input, output) {
     ##### raw text #####
     output$text_raw <- renderText({
         
-        load(url("https://www.dropbox.com/s/jaa8klpmvdxu9sr/data_for_plot.RData?dl=1"))
+        load(url("https://osf.io/6tme5/download"))
         
         start_date <- make_start_date2()
         end_date <- make_end_date2()
@@ -588,7 +588,7 @@ server <- function(input, output) {
     ##### clean text #####
     output$text_clean <- renderText({
         
-        load(url("https://www.dropbox.com/s/jvo6zk6ciphowbc/clean_data_for_plot.RData?dl=1"))
+        load(url("https://osf.io/8kt4x/download"))
         y <- y_clean
         
         
@@ -636,237 +636,237 @@ server <- function(input, output) {
         ## 2017 ##
         
         if (sum(grepl("2017-09",months_selected))==1){
-            load(url("https://www.dropbox.com/s/s3t1rqfic21s3pu/clean_tweets_2017_09_September.RData?dl=1"))
+            load(url("https://osf.io/8pjd9/download"))
         }
         
         if (sum(grepl("2017-10",months_selected))==1){
-            load(url("https://www.dropbox.com/s/air9awpefrl0xvb/clean_tweets_2017_10_October.RData?dl=1"))
+          load(url("https://osf.io/d8tny/download"))
         }
         
         if (sum(grepl("2017-11",months_selected))==1){
-            load(url("https://www.dropbox.com/s/9dhftbmmz0duq3v/clean_tweets_2017_11_November.RData?dl=1"))
+            load(url("https://osf.io/a4py8/download"))
         }
         
         if (sum(grepl("2017-12",months_selected))==1){
-            load(url("https://www.dropbox.com/s/f2wt5c9upkjeeiq/clean_tweets_2017_12_December.RData?dl=1"))
+            load(url("https://osf.io/xj4n9/download"))
         }
         
         ## 2018 ##
         
         if (sum(grepl("2018-01",months_selected))==1){    
-            load(url("https://www.dropbox.com/s/auhl4l541wgtzif/clean_tweets_2018_01_January.RData?dl=1"))
+            load(url("https://osf.io/s9wht/download"))
         }
         
         if (sum(grepl("2018-02",months_selected))==1){
-            load(url("https://www.dropbox.com/s/y2gaqkuely0u5jp/clean_tweets_2018_02_February.RData?dl=1"))
+            load(url("https://osf.io/nhb3w/download"))
         }
         
         if (sum(grepl("2018-03",months_selected))==1){
-            load(url("https://www.dropbox.com/s/tn3srq6wki9x4gk/clean_tweets_2018_03_March.RData?dl=1"))
+            load(url("https://osf.io/gxfpr/download"))
         }
         
         if (sum(grepl("2018-04",months_selected))==1){
-            load(url("https://www.dropbox.com/s/boki6bakfevjpr2/clean_tweets_2018_04_April.RData?dl=1"))
+            load(url("https://osf.io/psgmu/download"))
         }
         
         if (sum(grepl("2018-05",months_selected))==1){
-            load(url("https://www.dropbox.com/s/a1r1d782qqe1dpc/clean_tweets_2018_05_May.RData?dl=1"))
+            load(url("https://osf.io/8ukpy/download"))
         }
         
         if (sum(grepl("2018-06",months_selected))==1){
-            load(url("https://www.dropbox.com/s/350ho3fqtgonxpx/clean_tweets_2018_06_June.RData?dl=1"))
+            load(url("https://osf.io/ug9db/download"))
         }
         
         if (sum(grepl("2018-07",months_selected))==1){
-            load(url("https://www.dropbox.com/s/25vnr3jw1nzf54y/clean_tweets_2018_07_July.RData?dl=1"))
+            load(url("https://osf.io/57bz2/download"))
         }
         
         if (sum(grepl("2018-08",months_selected))==1){
-            load(url("https://www.dropbox.com/s/j19ohi4mjca1eqt/clean_tweets_2018_08_August.RData?dl=1"))
+            load(url("https://osf.io/tw5ax/download"))
         }
         
         if (sum(grepl("2018-09",months_selected))==1){
-            load(url("https://www.dropbox.com/s/8558wjgmybzubsh/clean_tweets_2018_09_September.RData?dl=1"))
+            load(url("https://osf.io/bdjz3/download"))
         }
         
         if (sum(grepl("2018-10",months_selected))==1){
-            load(url("https://www.dropbox.com/s/psh6kqpsouoewwf/clean_tweets_2018_10_October.RData?dl=1"))
+            load(url("https://osf.io/jq2hg/download"))
         }
         
         if (sum(grepl("2018-11",months_selected))==1){
-            load(url("https://www.dropbox.com/s/1anoe5n6s5rhtq1/clean_tweets_2018_11_November.RData?dl=1"))
+            load(url("https://osf.io/5hdkc/download"))
         }
         
         if (sum(grepl("2018-12",months_selected))==1){
-            load(url("https://www.dropbox.com/s/vjj9i2yuj3sual1/clean_tweets_2018_12_December.RData?dl=1"))
+            load(url("https://osf.io/zcuae/download"))
         }
         
         ## 2019 ##
         
         if (sum(grepl("2019-01",months_selected))==1){
-            load(url("https://www.dropbox.com/s/3i8s53ydqvv3yox/clean_tweets_2019_01_January.RData?dl=1"))
+            load(url("https://osf.io/zcuae/download"))
         }
         
         if (sum(grepl("2019-02",months_selected))==1){
-            load(url("https://www.dropbox.com/s/yvokg1vu3123eoh/clean_tweets_2019_02_February.RData?dl=1"))
+            load(url("https://osf.io/ysh35/download"))
         }
         
         if (sum(grepl("2019-03",months_selected))==1){
-            load(url("https://www.dropbox.com/s/ccl0ziv2r5ut89d/clean_tweets_2019_03_March.RData?dl=1"))
+            load(url("https://osf.io/khea7/download"))
         }
         
         if (sum(grepl("2019-04",months_selected))==1){
-            load(url("https://www.dropbox.com/s/2fyaxgg27177xrk/clean_tweets_2019_04_April.RData?dl=1"))
+            load(url("https://osf.io/5yngz/download"))
         }
         
         if (sum(grepl("2019-05",months_selected))==1){
-            load(url("https://www.dropbox.com/s/d2ih0b2tbr37ucq/clean_tweets_2019_05_May.RData?dl=1"))
+            load(url("https://osf.io/rgq2c/download"))
         }
         
         if (sum(grepl("2019-06",months_selected))==1){
-            load(url("https://www.dropbox.com/s/fmhn2vn50ov6q48/clean_tweets_2019_06_June.RData?dl=1"))
+            load(url("https://osf.io/jgwpv/download"))
         }
         
         if (sum(grepl("2019-07",months_selected))==1){
-            load(url("https://www.dropbox.com/s/1txz433rg087dvi/clean_tweets_2019_07_July.RData?dl=1"))
+            load(url("https://osf.io/2bdpe/download"))
         }
         
         if (sum(grepl("2019-08",months_selected))==1){
-            load(url("https://www.dropbox.com/s/gyv6pnuvdufa9dp/clean_tweets_2019_08_August.RData?dl=1"))
+            load(url("https://osf.io/gt25a/download"))
         }
         
         if (sum(grepl("2019-09",months_selected))==1){
-            load(url("https://www.dropbox.com/s/6zvyyw47fi4z9xz/clean_tweets_2019_09_September.RData?dl=1"))
+            load(url("https://osf.io/487tb/download"))
         }
         
         if (sum(grepl("2019-10",months_selected))==1){
-            load(url("https://www.dropbox.com/s/1z7w1hhoj1n2vg3/clean_tweets_2019_10_October.RData?dl=1"))
+            load(url("https://osf.io/pt9s4/download"))
         }
         
         if (sum(grepl("2019-11",months_selected))==1){
-            load(url("https://www.dropbox.com/s/et8y9i40kgs0thg/clean_tweets_2019_11_November.RData?dl=1"))
+            load(url("https://osf.io/2zm4j/download"))
         }
         
         if (sum(grepl("2019-12",months_selected))==1){
-            load(url("https://www.dropbox.com/s/tp2jr36v292ao03/clean_tweets_2019_12_December.RData?dl=1"))
+            load(url("https://osf.io/6vt5p/download"))
         }
         
         ## 2020 ##
         
         if (sum(grepl("2020-01",months_selected))==1){
-            load(url("https://www.dropbox.com/s/om5en1d3j5d6nso/clean_tweets_2020_01_January.RData?dl=1"))
+            load(url("https://osf.io/7rp25/download"))
         }
         
         if (sum(grepl("2020-02",months_selected))==1){
-            load(url("https://www.dropbox.com/s/ckt3adixbarns5x/clean_tweets_2020_02_February.RData?dl=1"))
+            load(url("https://osf.io/epsau/download"))
         }
         
         if (sum(grepl("2020-03",months_selected))==1){
-            load(url("https://www.dropbox.com/s/def446g79xjd3rv/clean_tweets_2020_03_March.RData?dl=1"))
+            load(url("https://osf.io/hr4ue/download"))
         }
         
         if (sum(grepl("2020-04",months_selected))==1){
-            load(url("https://www.dropbox.com/s/ofe9un3qm53q2tn/clean_tweets_2020_04_April.RData?dl=1"))
+            load(url("https://osf.io/jchqs/download"))
         }
         
         if (sum(grepl("2020-05",months_selected))==1){
-            load(url("https://www.dropbox.com/s/n4ixyl5a9qz7bp2/clean_tweets_2020_05_May.RData?dl=1"))
+            load(url("https://osf.io/ev9gd/download"))
         }
         
         if (sum(grepl("2020-06",months_selected))==1){
-            load(url("https://www.dropbox.com/s/yvsc3negkm7f6ai/clean_tweets_2020_06_June.RData?dl=1"))
+            load(url("https://osf.io/rpt35/download"))
         }
         
         if (sum(grepl("2020-07",months_selected))==1){
-            load(url("https://www.dropbox.com/s/r91v2ucpp9e9qqn/clean_tweets_2020_07_July.RData?dl=1"))
+            load(url("https://osf.io/vgwzk/download"))
         }
         
         if (sum(grepl("2020-08",months_selected))==1){
-            load(url("https://www.dropbox.com/s/a34fy1u9uot55l3/clean_tweets_2020_08_August.RData?dl=1"))
+            load(url("https://osf.io/pcqta/download"))
         }
         
         if (sum(grepl("2020-09",months_selected))==1){
-            load(url("https://www.dropbox.com/s/uuqyfklfs384flk/clean_tweets_2020_09_September.RData?dl=1"))
+            load(url("https://osf.io/w837s/download"))
         }
         
         if (sum(grepl("2020-10",months_selected))==1){
-            load(url("https://www.dropbox.com/s/hdt0ewgug9lwj1l/clean_tweets_2020_10_October.RData?dl=1"))
+            load(url("https://osf.io/k2csz/download"))
         }
         
         if (sum(grepl("2020-11",months_selected))==1){
-            load(url("https://www.dropbox.com/s/uh3bwstaqnjgi38/clean_tweets_2020_11_November.RData?dl=1"))
+            load(url("https://osf.io/vme82/download"))
         }
         
         if (sum(grepl("2020-12",months_selected))==1){
-            load(url("https://www.dropbox.com/s/ms6wd3koa4ww59n/clean_tweets_2020_12_December.RData?dl=1"))
+            load(url("https://osf.io/r6jp4/download"))
         }
         
         
         
         if (sum(grepl("2021-01",months_selected))==1){
-            load(url("https://www.dropbox.com/s/ymubezrrtk548v2/clean_tweets_2021_01_January.RData?dl=1"))
+            load(url("https://osf.io/24hfe/download"))
         }
         
         if (sum(grepl("2021-02",months_selected))==1){
-            load(url("https://www.dropbox.com/s/3ib4lsnzxuoycxd/clean_tweets_2021_02_February.RData?dl=1"))
+            load(url("https://osf.io/xtcgv/download"))
         }
         
         if (sum(grepl("2021-03",months_selected))==1){
-            load(url("https://www.dropbox.com/s/ci84ygcrka157zi/clean_tweets_2021_03_March.RData?dl=1"))
+            load(url("https://osf.io/y9bhv/download"))
         }
         
         if (sum(grepl("2021-04",months_selected))==1){
-            load(url("https://www.dropbox.com/s/imkrr51aqq9piil/clean_tweets_2021_04_April.RData?dl=1"))
+            load(url("https://osf.io/k3zj4/download"))
         }
         
         if (sum(grepl("2021-05",months_selected))==1){
-            load(url("https://www.dropbox.com/s/mjo251irnoe966n/clean_tweets_2021_05_May.RData?dl=1"))
+            load(url("https://osf.io/v3dmy/download"))
         }
         
         if (sum(grepl("2021-06",months_selected))==1){
-            load(url("https://www.dropbox.com/s/hkf0aymbyqe9khj/clean_tweets_2021_06_June.RData?dl=1"))
+            load(url("https://osf.io/zjb36/download"))
         }
         
         if (sum(grepl("2021-07",months_selected))==1){
-            load(url("https://www.dropbox.com/s/yu33xh1inva648x/clean_tweets_2021_07_July.RData?dl=1"))
+            load(url("https://osf.io/rv65f/download"))
         }
         
         if (sum(grepl("2021-08",months_selected))==1){
-            load(url("https://www.dropbox.com/s/wq7pid0tsyqn7em/clean_tweets_2021_08_August.RData?dl=1"))
+            load(url("https://osf.io/hd94a/download"))
         }
         
         if (sum(grepl("2021-09",months_selected))==1){
-            load(url("https://www.dropbox.com/s/oz02u03srgvk0sm/clean_tweets_2021_09_September.RData?dl=1"))
+            load(url("https://osf.io/mk8pv/download"))
         }
         
         if (sum(grepl("2021-10",months_selected))==1){
-            load(url("https://www.dropbox.com/s/qdibe9e42owpioq/clean_tweets_2021_10_October.RData?dl=1"))
+            load(url("https://osf.io/pdh7b/download"))
         }
         
         if (sum(grepl("2021-11",months_selected))==1){
-            load(url("https://www.dropbox.com/s/vs5lozemibgvgsm/clean_tweets_2021_11_November.RData?dl=1"))
+            load(url("https://osf.io/n7zfw/download"))
         }
         
         if (sum(grepl("2021-12",months_selected))==1){
-            load(url("https://www.dropbox.com/s/2y7to3zozu3h3h9/clean_tweets_2021_12_December.RData?dl=1"))
+            load(url("https://osf.io/a7zxy/download"))
         }
         
         
         
         if (sum(grepl("2022-01",months_selected))==1){
-            load(url("https://www.dropbox.com/s/dcparb3wdbh66cb/clean_tweets_2022_01_January.RData?dl=1"))
+            load(url("https://osf.io/5qywm/download"))
         }
         if (sum(grepl("2022-02",months_selected))==1){
-            load(url("https://www.dropbox.com/s/k6vkpi6ll3f8v9m/clean_tweets_2022_02_February.RData?dl=1"))
+            load(url("https://osf.io/ka3e7/download"))
         }
         if (sum(grepl("2022-03",months_selected))==1){
-            load(url("https://www.dropbox.com/s/q5w6d08u3d8vswv/clean_tweets_2022_03_March.RData?dl=1"))
+            load(url("https://osf.io/f7me2/download"))
         }
         if (sum(grepl("2022-04",months_selected))==1){
-            load(url("https://www.dropbox.com/s/bai8d9ov9w2v5ee/clean_tweets_2022_04_April.RData?dl=1"))
+            load(url("https://osf.io/n3u5t/download"))
         }
         if (sum(grepl("2022-05",months_selected))==1){
-            load(url("https://www.dropbox.com/s/dzlgf0y6qq8o74q/clean_tweets_2022_05_May.RData?dl=1"))
+            load(url("https://osf.io/npjyv/download"))
         }
         
         
