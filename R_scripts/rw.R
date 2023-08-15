@@ -76,67 +76,59 @@ academictwitteR::
 require(jsonlite)
 require(dplyr)
 
-
-load("../confidential/twitter_dev_credentials.RData")
-bearer_token <- Sys.getenv("$BEARER_TOKEN")
-headers <- c(`Authorization` = sprintf('Bearer %s', bearer_token))
-
-
-bearer_token <- 
-  "AAAAAAAAAAAAAAAAAAAAAJosOwEAAAAANAZI%2BmqUcoZl8LUr%2FlvyvR3clXE%3DC3RyqBlvYFs0QGOJzDMVTkhoV92B9fwBc9dRo5bB9jqdXPwbLi"
-
-params <- list(`user.fields` = 'description',
-               `expansions` = 'pinned_tweet_id')
-
-
-
-readline('cillianmacaodh')
-handle <- readline('cillianmacaodh')
-url_handle <-
-  sprintf('https://api.twitter.com/2/users/by?usernames=%s', 'cillianmacaodh')
-
-url_handle
-
-response <-
-  httr::GET(url = url_handle,
-            httr::add_headers(.headers = headers),
-            query = params)
-obj <- httr::content(response, as = "text")
-print(obj)
-
-
-get_bearer()
-
-
-
-
-tweets <- tweets[which(tweets$dup_id==1),]
-tweets$author_id[2]
-
-
-test <- get_user_profile(tweets$author_id[2],bearer_token)
-
-
-
-#install.packages("osfr")
-
-library(osfr)
-library(tidyverse)
-
-load(url("https://www.dropbox.com/s/air9awpefrl0xvb/clean_tweets_2017_10_October.RData?dl=1"))
-
-load(url("https://osf.io/d8tny?dl=1"))
-
-https://osf.io/d8tny
-
-
-osfr::osf_retrieve_node("https://osf.io/d8tny")
-
-osfr::osf_retrieve_node("https://osf.io/y236d")
-
-
-
-load(url("https://osf.io/y236d/files/osfstorage/621fcfc0295ed1025c2818e7"))
+# 
+# params <- list(`user.fields` = 'description',
+#                `expansions` = 'pinned_tweet_id')
+# 
+# 
+# 
+# readline('cillianmacaodh')
+# handle <- readline('cillianmacaodh')
+# url_handle <-
+#   sprintf('https://api.twitter.com/2/users/by?usernames=%s', 'cillianmacaodh')
+# 
+# url_handle
+# 
+# response <-
+#   httr::GET(url = url_handle,
+#             httr::add_headers(.headers = headers),
+#             query = params)
+# obj <- httr::content(response, as = "text")
+# print(obj)
+# 
+# 
+# get_bearer()
+# 
+# 
+# 
+# 
+# tweets <- tweets[which(tweets$dup_id==1),]
+# tweets$author_id[2]
+# 
+# 
+# test <- get_user_profile(tweets$author_id[2],bearer_token)
+# 
+# 
+# 
+# #install.packages("osfr")
+# 
+# library(osfr)
+# library(tidyverse)
+# 
+# load(url("https://www.dropbox.com/s/air9awpefrl0xvb/clean_tweets_2017_10_October.RData?dl=1"))
+# 
+# load(url("https://osf.io/d8tny?dl=1"))
+# 
+# https://osf.io/d8tny
+# 
+# 
+# osfr::osf_retrieve_node("https://osf.io/d8tny")
+# 
+# osfr::osf_retrieve_node("https://osf.io/y236d")
+# 
+# 
+# 
+# load(url("https://osf.io/y236d/files/osfstorage/621fcfc0295ed1025c2818e7"))
 
 
 
