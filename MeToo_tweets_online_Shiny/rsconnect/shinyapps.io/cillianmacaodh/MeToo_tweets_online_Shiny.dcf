@@ -5,9 +5,9 @@ account: cillianmacaodh
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 5744109
-bundleId: 7566555
+bundleId: 7566561
 url: https://cillianmacaodh.shinyapps.io/MeToo_tweets_online_Shiny/
-when: 1692045417.82248
-lastSyncTime: 1692045417.8225
+when: 1692045514.07974
+lastSyncTime: 1692045514.07975
 asMultiple: FALSE
 asStatic: FALSE
