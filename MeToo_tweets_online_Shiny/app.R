@@ -1105,7 +1105,7 @@ server <- function(input, output) {
     
     output$plot3 <- renderPlot({
       
-      load("../sentiment_data_full.RData")
+      load("sentiment_data_full.RData")
       df2 <- sentiment_data_full
       
       start_date4 <- make_start_date4()

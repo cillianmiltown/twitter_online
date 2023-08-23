@@ -63,9 +63,11 @@ month_data_fun <- function(x1){
               , total_twwts_incl_retweets = sum(num_dups)
     )
   
-  
-  df1
-  
+  ## uncomment as required
+  # for daily sentiment data
+  # df1
+  # for sentiment data for each tweet
+  df
 }
 
 
@@ -101,8 +103,11 @@ sentiment_data15 <- do.call(rbind, lapply(c(61:67), month_data_fun))
 save(sentiment_data15, file = "../Data_for_ShinyApp/MeToo_tweets/sentiment_sections/sentiment_data15.RData")
 
 
+july_2020 <- month_data_fun(36)
 
+x <- july_2020[which(july_2020$meanSentiment>0),]
 
+x$text
 df2 <- rbind.data.frame(
   #sentiment_data1
   sentiment_data2
