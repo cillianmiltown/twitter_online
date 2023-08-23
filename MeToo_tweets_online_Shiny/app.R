@@ -23,7 +23,8 @@ ui <- dashboardPage(
             ),
             
             menuItem("Plot", tabName = "plot", icon = icon("signal", lib = "glyphicon")),
-            menuItem("Clean Tweets (round 1)", tabName = "clean_tweets", icon = icon("list", lib = "glyphicon"))
+            menuItem("Clean Tweets (round 1)", tabName = "clean_tweets", icon = icon("list", lib = "glyphicon")),
+            menuItem("Sentiment Analysis", tabName = "sentiment", icon = icon("heart-empty", lib = "glyphicon"))
         )
     ),
     dashboardBody(
@@ -145,6 +146,44 @@ ui <- dashboardPage(
                         ),
                         box(DT::dataTableOutput("table2"))#,
                     )
+            ),
+            ##### Sentiment Analysis #####
+            tabItem(tabName = "sentiment",
+                    fluidRow(
+                      box(width = 3,
+                          dateRangeInput('dateRange4',
+                                         label = 'Select Date Range:',
+                                         start = "2017-10-14", end = "2023-02-28"
+                          ),
+                          selectInput("yaxis","Y-axis:",
+                                      choices =list(
+                                        mean_daily_sentiment = "mean_daily_sentiment",
+                                        total_tweets = "total_tweets",
+                                        total_tweets_incl_retweets = "total_tweets_incl_retweets")
+                                      , selected=NULL),
+                          selectInput("fill","Fill:",
+                                      choices =list(
+                                        mean_daily_sentiment = "mean_daily_sentiment",
+                                        total_tweets = "total_tweets",
+                                        total_tweets_incl_retweets = "total_tweets_incl_retweets")
+                                      , selected=NULL)
+                          # ,
+                          # verbatimTextOutput("text_clean"),
+                          # radioButtons("duplicates", "Duplicated Tweets",
+                          #              choiceNames = c(
+                          #                "Do not Remove Duplicated Tweets",
+                          #                "Remove Duplicated Tweets",
+                          #                "Show only Duplicated Tweets"
+                          #              ),
+                          #              choiceValues = c(
+                          #                "keep_all"
+                          #                ,"remove_duplicated"       
+                          #                ,"show_duplicated") )
+                      ),
+                      box(
+                        plotOutput("plot3")
+                        )#,
+                    )
             )
         )
     )
@@ -165,6 +204,12 @@ server <- function(input, output) {
     
     make_start_date3 <- reactive({input$dateRange3[1]})
     make_end_date3 <- reactive({input$dateRange3[2]})
+    
+    make_start_date4 <- reactive({input$dateRange4[1]})
+    make_end_date4 <- reactive({input$dateRange4[2]})
+    
+    make_y_axis <- reactive({input$yaxis})
+    make_fill <- reactive({input$fill})
     
     
     mft_boxes1 <- reactive({
@@ -1053,6 +1098,40 @@ server <- function(input, output) {
         eval(parse(text=expression))
         
         df_combined
+    })
+    
+    
+    ##### Sentiment #####
+    
+    output$plot3 <- renderPlot({
+      
+      load("../sentiment_data_full.RData")
+      df2 <- sentiment_data_full
+      
+      start_date4 <- make_start_date4()
+      end_date4 <- make_end_date4()
+      
+      #y <- table(df1$date)
+      
+      df2 <- df2[df2$date >= paste(as.character(start_date4)) & df2$date <= paste(as.character(end_date4)),]
+      
+      y_axis <- make_y_axis()
+      fill_v <- make_fill()
+      
+      ggplot(df2, aes(date, !!sym(y_axis), fill = !!sym(fill_v))) + 
+        scale_fill_continuous(low = "grey",
+                              high = "black",)+
+        geom_col()+
+        theme_bw()
+      
+      # # generate bins based on input$bins from ui.R
+      # x    <- faithful[, 2]
+      # bins <- seq(min(x), max(x), length.out = input$bins + 1)
+      # 
+      # # draw the histogram with the specified number of bins
+      # hist(x, breaks = bins, col = 'darkgray', border = 'white',
+      #      xlab = 'Waiting time to next eruption (in mins)',
+      #      main = 'Histogram of waiting times')
     })
 }
 

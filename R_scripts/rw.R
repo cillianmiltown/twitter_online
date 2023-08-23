@@ -261,3 +261,147 @@ load(url("https://osf.io/2g6zc/download"))
 load(url("https://osf.io/px2n3/download"))
 
 variable.names(tweets_2023_01_January)
+
+
+
+### 21/Aug/2023
+
+# https://towardsdatascience.com/an-intro-to-sentiment-analysis-in-r-how-does-twitter-feel-about-baker-mayfield-cda513ed0b78
+
+#library(rtweet)
+#install.packages("stopwords")
+library(stopwords) 
+library(dplyr) 
+library(tidyr) 
+library(tidytext) 
+#install.packages("wordcloud", dependencies = TRUE)
+library(wordcloud)
+library(devtools)
+library(tidyverse)      
+library(stringr)
+#install.packages("textdata")
+library(textdata)
+library(sentimentr)
+
+
+df <- clean_tweets_2023_01_January
+
+
+tweets_data <- clean_tweets_2023_01_January[which(clean_tweets_2023_01_January$lang=="en"),]
+tweets_data$text
+
+df <- clean_tweets_2023_01_January
+df <- df[which(df$lang=="en"),]
+df <- df[!grepl("Rajokri", df$text),]
+df[!grepl("Rajokri", df$text),]
+
+df <- df %>% 
+  mutate(text = str_replace(text, "&amp;", " and "))
+df$text
+
+df$text
+grepl("Rajokri", df$text)
+grepl("noxious pesticides being released", df$text)
+
+tweets_data <- df
+tweets_data[1000,]
+
+words_data <- tweets_data %>% select(text)  %>% 
+ unnest_tokens(word, text)
+
+words_data %>% count(word, sort = TRUE)
+words_data <- words_data %>% filter(!word %in% c('https', 't.co', 'he\'s', 'i\'m', 'it\'s'))
+
+words_data2 <- words_data %>%
+  anti_join(stop_words) %>%
+  count(word, sort = TRUE)
+head(words_data2, n = 20)
+tail(words_data2, n = 10)
+
+
+words_data2 %>%
+  inner_join(get_sentiments("bing"),multiple = "all") %>%
+  count(sentiment, sort = TRUE)
+
+table(words_data2$word)
+sum(words_data2$n==3)
+df <- words_data2
+
+
+head(df, n = 20)
+tail(df, n = 10)
+
+
+df <- df[which(df$n>3),]
+
+df1 <- df[2:100,]
+df$word
+
+wordcloud::wordcloud(df1$word, df1$n)
+
+
+#install.packages("sentimentr")
+library(sentimentr)
+
+
+
+df <- clean_tweets_2023_01_January
+df <- df[which(df$lang=="en"),]
+
+df[!grepl("Rajokri", df$text),]
+df <- df[!grepl("Rajokri", df$text),]
+
+df$text[grepl("video", df$text)]
+df <- df[!grepl("#HappyNewYear2023", df$text),]
+
+
+
+df <- df %>% 
+  mutate(text = str_replace(text, "&amp;", " and "))
+df$text
+df <- df[which(df$dup_id==1),]
+
+
+
+
+
+tweet_sentences_data <- sentiment(get_sentences(df$text)) %>% 
+  group_by(element_id) %>% 
+  summarize(meanSentiment = mean(sentiment))
+head(tweet_sentences_data)
+df <- cbind.data.frame(df, tweet_sentences_data)
+
+df$element_id
+df1 <- df %>% group_by(date) %>% 
+  summarize(mean_daily_sentiment = mean(meanSentiment)
+            , total_tweets = length(dup_id)
+            , total_twwts_incl_retweets = sum(num_dups)
+            )
+
+
+df1
+ggplot(df1, aes(date, total_twwts_incl_retweets, fill = mean_daily_sentiment)) + 
+  scale_fill_continuous(low = "red",
+                        high = "lightblue",)+
+  geom_col()+
+  theme_bw()
+
+
+
+tweets_data$text[2]
+
+print(paste0("Most negative tweets sentiment: ", min(tweet_sentences_data$meanSentiment)))
+print(paste0("Most positive tweets sentiment: ", max(tweet_sentences_data$meanSentiment)))
+print(paste0("# of Negative Tweets: ", sum(tweet_sentences_data$meanSentiment < 0)))
+print(paste0("# of Neutral Tweets: ", sum(tweet_sentences_data$meanSentiment == 0)))
+print(paste0("# of Positive Tweets: ", sum(tweet_sentences_data$meanSentiment > 0)))
+
+
+slices <- c(sum(tweet_sentences_data$meanSentiment < 0), sum(tweet_sentences_data$meanSentiment == 0),
+            sum(tweet_sentences_data$meanSentiment > 0))
+labels <- c("Negative Tweets: ", "Neutral Tweets: ", "Positive Tweets: ")
+pct <- round(slices/sum(slices)*100)
+labels <- paste(labels, pct, "%", sep = "")
+#customize labeling#add in appropriate colors for positive, neutral, negative
+pie(slices, labels = labels, col=c('red', 'yellow', 'green'), 
+    main="Tweet Sentiment Percentages")
