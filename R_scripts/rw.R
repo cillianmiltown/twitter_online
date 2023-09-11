@@ -405,3 +405,133 @@ labels <- paste(labels, pct, "%", sep = "")
 #customize labeling#add in appropriate colors for positive, neutral, negative
 pie(slices, labels = labels, col=c('red', 'yellow', 'green'), 
     main="Tweet Sentiment Percentages")
+
+
+##### moral foundations 10 Sept 2023 ####
+
+#install.packages("devtools")
+#devtools::install_github("kbenoit/quanteda.dictionaries")
+library("quanteda")
+library("quanteda.dictionaries")
+library(sentimentr)
+library(dplyr)
+
+#help(liwcalike)
+
+#output_lsd <- liwcalike(data_corpus_inaugural, dictionary = data_dictionary_MFD)
+#output_lsd
+
+
+path <- "../Data_for_ShinyApp/MeToo_tweets/clean"
+  
+list.files("../Data_for_ShinyApp/MeToo_tweets/clean")
+
+
+
+month_data <- get(load(paste0(path,"/",list.files(path)[2]))[1])
+
+output_lsd <- liwcalike(month_data$text, dictionary = data_dictionary_MFD)
+
+cbind.data.frame(month_data, output_lsd)
+
+month_data$text
+
+df <- month_data
+
+tweet_sentences_data <- sentiment(get_sentences(df$text)) %>% 
+  group_by(element_id) %>% 
+  summarize(meanSentiment = mean(sentiment))
+head(tweet_sentences_data)
+df <- cbind.data.frame(df, tweet_sentences_data)
+
+sentiment_month <- sentiment((month_data$text))
+
+month_data_fun <- function(x1){
+  path <- "../Data_for_ShinyApp/MeToo_tweets/clean"
+  
+  
+  
+  month_data <- get(load(paste0(path,"/",list.files(path)[x1]))[1])
+  
+  df <- month_data
+  
+  df <- df[which(df$lang=="en"),]
+  
+  df[!grepl("Rajokri", df$text),]
+  df <- df[!grepl("Rajokri", df$text),]
+  
+  df$text[grepl("video", df$text)]
+  df <- df[!grepl("#HappyNewYear2023", df$text),]
+  
+  
+  
+  df <- df %>% 
+    mutate(text = str_replace(text, "&amp;", " and "))
+  df$text
+  df <- df[which(df$dup_id==1),]
+  
+  
+  
+  
+  
+  tweet_sentences_data <- sentiment(get_sentences(df$text)) %>% 
+    group_by(element_id) %>% 
+    summarize(meanSentiment = mean(sentiment))
+  head(tweet_sentences_data)
+  df <- cbind.data.frame(df, tweet_sentences_data)
+  
+  
+  df1 <- df %>% group_by(date) %>% 
+    summarize(mean_daily_sentiment = mean(meanSentiment)
+              , total_tweets = length(dup_id)
+              , total_twwts_incl_retweets = sum(num_dups)
+    )
+  
+  ## uncomment as required
+  # for daily sentiment data
+  # df1
+  # for sentiment data for each tweet
+  df
+}
+
+
+liwcalike)
+
+#output_lsd <- liwcalike(data_corpus_inaugural, dictionary = data_dictionary_MFD)
+#output_lsd
+# 
+# 
+# path <- "../Data_for_ShinyApp/MeToo_tweets/clean"
+# 
+# list.files("../Data_for_ShinyApp/MeToo_tweets/clean")
+# 
+# 
+# 
+# month_data <- get(load(paste0(path,"/",list.files(path)[2]))[1])
+# 
+# output_lsd <- liwcalike(month_data$text, dictionary = data_dictionary_MFD)
+# 
+# cbind.data.frame(month_data, output_lsd)
+# 
+# month_data$text
+# 
+# df <- month_data
+# 
+# tweet_sentences_data <- sentiment(get_sentences(df$text)) %>% 
+#   group_by(element_id) %>% 
+#   summarize(meanSentiment = mean(sentiment))
+# head(tweet_sentences_data)
+# df <- cbind.data.frame(df, tweet_sentences_data)
+# 
+# 
+# cbind.data.frame(month_data, output_lsd, tweet_sentences_data)
+# 
+# 
+# tweet_files <- list.files(path)
+# tweets_name <- paste0(gsub(".RData", "", tweet_files[2]))
+# 
+# load(paste0("../downloaded_tweets/monthly_data/",tweet_files[1]))
+# tweets_name <- paste0("tweets_", gsub(".RData", "", tweet_files[1]))
+# tweets_name_clean <- paste0("clean_tweets_", gsub(".RData", "", tweet_files[1]))
+# tweets <- get(tweets_name)
+

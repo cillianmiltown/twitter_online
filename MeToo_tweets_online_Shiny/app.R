@@ -24,6 +24,8 @@ ui <- dashboardPage(
             
             menuItem("Plot", tabName = "plot", icon = icon("signal", lib = "glyphicon")),
             menuItem("Clean Tweets (round 1)", tabName = "clean_tweets", icon = icon("list", lib = "glyphicon")),
+            menuItem("MFT (Tweets)", tabName = "MFT", icon = icon("book", lib = "glyphicon")),
+            menuItem("MFT (plot)", tabName = "MFTPlot", icon = icon("book", lib = "glyphicon")),
             menuItem("Sentiment Analysis", tabName = "sentiment", icon = icon("heart-empty", lib = "glyphicon"))
         )
     ),
@@ -67,11 +69,13 @@ ui <- dashboardPage(
                             
                             
                         ),
-                        
                         box(
-                            
-                            DT::dataTableOutput("table1"))
-                    )
+                          div(
+                            DT::dataTableOutput("table1")
+                            , style = "overflow-y: auto; height: 100%; width: 100%")
+                        )
+                    ),
+                    
             ),
             
             ##### Plot (Second tab) #####
@@ -144,7 +148,149 @@ ui <- dashboardPage(
                                              ,"remove_duplicated"       
                                              ,"show_duplicated") )
                         ),
-                        box(DT::dataTableOutput("table2"))#,
+                        box(
+                          div(
+                            DT::dataTableOutput("table2")
+                            , style = "overflow-y: auto; height: 100%; width: 100%")
+                        )
+                    )
+            ),
+            ##### MFT (Fourth tab) #####
+            tabItem(tabName = "MFT",
+                    fluidRow(
+                      box(width = 3,
+                          dateRangeInput('dateRange5',
+                                         label = 'Select Date Range:',
+                                         start = "2023-02-01", end = "2023-02-28"
+                          ),
+                          HTML("Please note: <br>",
+                               "1. Due to large volume of data selecting a narrow date range is recommended<br>",
+                               "2. Selecting a range across months can cause errors<br>",
+                               "&nbsp;"),
+                          checkboxGroupInput("cols_select3", "Select Columns",
+                                             choiceNames = c(#"Author ID",
+                                               "Tweet ID",
+                                               "Link",
+                                               "Tweet Content",
+                                               "Metrics",
+                                               "Created",
+                                               "Date",
+                                               "Language",
+                                               "Sentiment",
+                                               "Care",
+                                               "Fairness",
+                                               "Loyalty",
+                                               "Authority",
+                                               "Sanctity"
+                                               ),
+                                             choiceValues = c(
+                                               #"author"       
+                                               #,
+                                               "id"
+                                               ,"link"
+                                               ,"text"                        
+                                               ,"public_metrics"             
+                                               ,"created_at"
+                                               ,"date_simple"
+                                               ,"lang"
+                                               ,"sentiment"
+                                               ,"care"
+                                               ,"fairness"
+                                               ,"loyalty"
+                                               ,"authority"
+                                               ,"sanctity"
+                                               ),
+                                             selected = c("text")
+                          ),
+                          
+                          verbatimTextOutput("text_MFT")
+                          # ,
+                          # radioButtons("duplicates", "Duplicated Tweets",
+                          #              choiceNames = c(
+                          #                "Do not Remove Duplicated Tweets",
+                          #                "Remove Duplicated Tweets",
+                          #                "Show only Duplicated Tweets"
+                          #              ),
+                          #              choiceValues = c(
+                          #                "keep_all"
+                          #                ,"remove_duplicated"       
+                          #                ,"show_duplicated") )
+                      ),
+                      
+                      box(
+                        div(
+                        DT::dataTableOutput("table3")
+                        , style = "overflow-y: auto; height: 100%; width: 100%")
+                        )#,
+                    )
+            ),
+            ##### MFT Analysis #####
+            tabItem(tabName = "MFTPlot",
+                    fluidRow(
+                      box(width = 3,
+                          dateRangeInput('dateRange6',
+                                         label = 'Select Date Range:',
+                                         start = "2023-01-01", end = "2023-02-28"
+                          ),
+                          checkboxGroupInput("mft_plot_measures","Select Measures",
+                                             choiceNames = c(
+                                               "mean_daily_sentiment",
+                                               "care_virtue",
+                                               "care_vice",
+                                               "fairness_virtue",
+                                               "fairness_vice",
+                                               "loyalty_virtue",
+                                               "loyalty_vice",
+                                               "authority_virtue",
+                                               "authority_vice",
+                                               "sanctity_virtue",
+                                               "sanctity_vice"
+                                             ),
+                                             choiceValues = c(
+                                               "mean_daily_sentiment",
+                                               "care_virtue",
+                                               "care_vice",
+                                               "fairness_virtue",
+                                               "fairness_vice",
+                                               "loyalty_virtue",
+                                               "loyalty_vice",
+                                               "authority_virtue",
+                                               "authority_vice",
+                                               "sanctity_virtue",
+                                               "sanctity_vice"
+                                             )
+                                      
+                                        #      
+                                        #      choices =list(
+                                        # mean_daily_sentiment = "mean_daily_sentiment",
+                                        # care_virtue = "care_virtue",
+                                        # care_vice = "care_vice",
+                                        # fairness_virtue = "fairness_virtue",
+                                        # fairness_vice = "fairness_vice",
+                                        # loyalty_virtue = "loyalty_virtue",
+                                        # loyalty_vice = "loyalty_vice",
+                                        # authority_virtue = "authority_virtue",
+                                        # authority_vice = "authority_vice",
+                                        # sanctity_virtue = "sanctity_virtue",
+                                        # sanctity_vice = "sanctity_vice"
+                                        # )
+                                      , selected=NULL)
+                          # ,
+                          # verbatimTextOutput("text_clean"),
+                          # radioButtons("duplicates", "Duplicated Tweets",
+                          #              choiceNames = c(
+                          #                "Do not Remove Duplicated Tweets",
+                          #                "Remove Duplicated Tweets",
+                          #                "Show only Duplicated Tweets"
+                          #              ),
+                          #              choiceValues = c(
+                          #                "keep_all"
+                          #                ,"remove_duplicated"       
+                          #                ,"show_duplicated") )
+                      ),
+                      box(
+                        plotOutput("plot4")
+                        )#,
                     )
             ),
             ##### Sentiment Analysis #####
@@ -182,7 +328,7 @@ ui <- dashboardPage(
                       ),
                       box(
                         plotOutput("plot3")
-                        )#,
+                      )#,
                     )
             )
         )
@@ -208,9 +354,20 @@ server <- function(input, output) {
     make_start_date4 <- reactive({input$dateRange4[1]})
     make_end_date4 <- reactive({input$dateRange4[2]})
     
+    make_start_date5 <- reactive({input$dateRange5[1]})
+    make_end_date5 <- reactive({input$dateRange5[2]})
+    
+    make_start_date6 <- reactive({input$dateRange6[1]})
+    make_end_date6 <- reactive({input$dateRange6[2]})
+    
     make_y_axis <- reactive({input$yaxis})
     make_fill <- reactive({input$fill})
     
+    
+    mft_plot_measures1 <- reactive({
+      mft_boxes <- eval(parse(text = 'input$mft_plot_measures'))
+      mft_boxes
+    })
     
     mft_boxes1 <- reactive({
         mft_boxes <- eval(parse(text = 'input$cols_select'))
@@ -220,6 +377,11 @@ server <- function(input, output) {
     mft_boxes2 <- reactive({
         mft_boxes <- eval(parse(text = 'input$cols_select2'))
         mft_boxes
+    })
+    
+    mft_boxes3 <- reactive({
+      mft_boxes <- eval(parse(text = 'input$cols_select3'))
+      mft_boxes
     })
     
     duplicate_tweets_fun <- reactive({
@@ -1100,6 +1262,677 @@ server <- function(input, output) {
         df_combined
     })
     
+    
+    
+    ##### MFT text #####
+    output$text_MFT <- renderText({
+      
+      load(url("https://osf.io/q3854/download"))
+      y <- y_clean
+      
+      
+      start_date <- make_start_date5()
+      end_date <- make_end_date5()
+      
+      start_date <- make_start_date5()
+      end_date <- make_end_date5()
+      y <- y[y$date >= paste(as.character(start_date)) & y$date <= paste(as.character(end_date)),]
+      
+      text_to_display <- 
+        paste(as.character(formatC(sum(y$Freq), big.mark=",")), " Total")
+      
+      HTML(paste0((text_to_display)))
+      
+    })
+    output$distPlot <- renderPlot({
+      df1[order(df1$created_at), ]
+      
+      
+      start_date <- make_start_date()
+      end_date <- make_end_date()
+      
+      
+      df1 <- df1[df1$date >= paste(as.character(start_date)) & df1$date <= paste(as.character(end_date)),]
+      
+      
+      # generate bins based on input$bins from ui.R
+      x    <- faithful[, 2]
+      bins <- seq(min(x), max(x), length.out = input$bins + 1)
+      
+      # draw the histogram with the specified number of bins
+      hist(x, breaks = bins, col = 'darkgray', border = 'white')
+    })
+    
+    ##### Table of MFT Tweets #####
+    output$table3 <- DT::renderDataTable({
+      
+      start_date <- make_start_date5()
+      end_date <- make_end_date5()
+      
+      months_selected <- seq(as.Date(start_date), as.Date(end_date),by="month")
+      
+      
+      ## 2017 ##
+      
+      if (sum(grepl("2017-09",months_selected))==1){
+        load(url("https://osf.io/mhe2g/download"))
+      }
+      
+      if (sum(grepl("2017-10",months_selected))==1){
+        load(url("https://osf.io/9npys/download"))
+      }
+      
+      if (sum(grepl("2017-11",months_selected))==1){
+        load(url("https://osf.io/yng5m/download"))
+      }
+      
+      if (sum(grepl("2017-12",months_selected))==1){
+        load(url("https://osf.io/mkfyw/download"))
+      }
+      
+      ## 2018 ##
+      
+      if (sum(grepl("2018-01",months_selected))==1){    
+        load(url("https://osf.io/tw87v/download"))
+      }
+      
+      if (sum(grepl("2018-02",months_selected))==1){
+        load(url("https://osf.io/fa6vb/download"))
+      }
+      
+      if (sum(grepl("2018-03",months_selected))==1){
+        load(url("https://osf.io/e9ufq/download"))
+      }
+      
+      if (sum(grepl("2018-04",months_selected))==1){
+        load(url("https://osf.io/vx56b/download"))
+      }
+      
+      if (sum(grepl("2018-05",months_selected))==1){
+        load(url("https://osf.io/wqh5p/download"))
+      }
+      
+      if (sum(grepl("2018-06",months_selected))==1){
+        load(url("https://osf.io/fhxzp/download"))
+      }
+      
+      if (sum(grepl("2018-07",months_selected))==1){
+        load(url("https://osf.io/rcwfa/download"))
+      }
+      
+      if (sum(grepl("2018-08",months_selected))==1){
+        load(url("https://osf.io/spjzf/download"))
+      }
+      
+      if (sum(grepl("2018-09",months_selected))==1){
+        load(url("https://osf.io/9rxmn/download"))
+      }
+      
+      if (sum(grepl("2018-10",months_selected))==1){
+        load(url("https://osf.io/eajpq/download"))
+      }
+      
+      if (sum(grepl("2018-11",months_selected))==1){
+        load(url("https://osf.io/sbu75/download"))
+      }
+      
+      if (sum(grepl("2018-12",months_selected))==1){
+        load(url("https://osf.io/k64g2/download"))
+      }
+      
+      ## 2019 ##
+      
+      if (sum(grepl("2019-01",months_selected))==1){
+        load(url("https://osf.io/7g4de/download"))
+      }
+      
+      if (sum(grepl("2019-02",months_selected))==1){
+        load(url("https://osf.io/4ze3r/download"))
+      }
+      
+      if (sum(grepl("2019-03",months_selected))==1){
+        load(url("https://osf.io/rzhfy/download"))
+      }
+      
+      if (sum(grepl("2019-04",months_selected))==1){
+        load(url("https://osf.io/hnjwa/download"))
+      }
+      
+      if (sum(grepl("2019-05",months_selected))==1){
+        load(url("https://osf.io/wxsc2/download"))
+      }
+      
+      if (sum(grepl("2019-06",months_selected))==1){
+        load(url("https://osf.io/j79ky/download"))
+      }
+      
+      if (sum(grepl("2019-07",months_selected))==1){
+        load(url("https://osf.io/keb65/download"))
+      }
+      
+      if (sum(grepl("2019-08",months_selected))==1){
+        load(url("https://osf.io/by78r/download"))
+      }
+      
+      if (sum(grepl("2019-09",months_selected))==1){
+        load(url("https://osf.io/wdupt/download"))
+      }
+      
+      if (sum(grepl("2019-10",months_selected))==1){
+        load(url("https://osf.io/2brn8/download"))
+      }
+      
+      if (sum(grepl("2019-11",months_selected))==1){
+        load(url("https://osf.io/k7rcu/download"))
+      }
+      
+      if (sum(grepl("2019-12",months_selected))==1){
+        load(url("https://osf.io/kvdwm/download"))
+      }
+      
+      ## 2020 ##
+      
+      if (sum(grepl("2020-01",months_selected))==1){
+        load(url("https://osf.io/js5tg/download"))
+      }
+      
+      if (sum(grepl("2020-02",months_selected))==1){
+        load(url("https://osf.io/t7ygc/download"))
+      }
+      
+      if (sum(grepl("2020-03",months_selected))==1){
+        load(url("https://osf.io/9p4v2/download"))
+      }
+      
+      if (sum(grepl("2020-04",months_selected))==1){
+        load(url("https://osf.io/egjaz/download"))
+      }
+      
+      if (sum(grepl("2020-05",months_selected))==1){
+        load(url("https://osf.io/9x2ds/download"))
+      }
+      
+      if (sum(grepl("2020-06",months_selected))==1){
+        load(url("https://osf.io/r9qvu/download"))
+      }
+      
+      if (sum(grepl("2020-07",months_selected))==1){
+        load(url("https://osf.io/a9ubx/download"))
+      }
+      
+      if (sum(grepl("2020-08",months_selected))==1){
+        load(url("https://osf.io/bgqs6/download"))
+      }
+      
+      if (sum(grepl("2020-09",months_selected))==1){
+        load(url("https://osf.io/fb4ey/download"))
+      }
+      
+      if (sum(grepl("2020-10",months_selected))==1){
+        load(url("https://osf.io/sb3te/download"))
+      }
+      
+      if (sum(grepl("2020-11",months_selected))==1){
+        load(url("https://osf.io/wuxad/download"))
+      }
+      
+      if (sum(grepl("2020-12",months_selected))==1){
+        load(url("https://osf.io/qdwzp/download"))
+      }
+      
+      
+      
+      if (sum(grepl("2021-01",months_selected))==1){
+        load(url("https://osf.io/xzn84/download"))
+      }
+      
+      if (sum(grepl("2021-02",months_selected))==1){
+        load(url("https://osf.io/pehbr/download"))
+      }
+      
+      if (sum(grepl("2021-03",months_selected))==1){
+        load(url("https://osf.io/hn86s/download"))
+      }
+      
+      if (sum(grepl("2021-04",months_selected))==1){
+        load(url("https://osf.io/egjaz/download"))
+      }
+      
+      if (sum(grepl("2021-05",months_selected))==1){
+        load(url("https://osf.io/9x2ds/download"))
+      }
+      
+      if (sum(grepl("2021-06",months_selected))==1){
+        load(url("https://osf.io/r9qvu/download"))
+      }
+      
+      if (sum(grepl("2021-07",months_selected))==1){
+        load(url("https://osf.io/a9ubx/download"))
+      }
+      
+      if (sum(grepl("2021-08",months_selected))==1){
+        load(url("https://osf.io/bgqs6/download"))
+      }
+      
+      if (sum(grepl("2021-09",months_selected))==1){
+        load(url("https://osf.io/fb4ey/download"))
+      }
+      
+      if (sum(grepl("2021-10",months_selected))==1){
+        load(url("https://osf.io/sb3te/download"))
+      }
+      
+      if (sum(grepl("2021-11",months_selected))==1){
+        load(url("https://osf.io/wuxad/download"))
+      }
+      
+      if (sum(grepl("2021-12",months_selected))==1){
+        load(url("https://osf.io/qdwzp/download"))
+      }
+      
+      
+      
+      if (sum(grepl("2022-01",months_selected))==1){
+        load(url("https://osf.io/48r5d/download"))
+      }
+      if (sum(grepl("2022-02",months_selected))==1){
+        load(url("https://osf.io/m4g7s/download"))
+      }
+      if (sum(grepl("2022-03",months_selected))==1){
+        load(url("https://osf.io/hq96c/download"))
+      }
+      if (sum(grepl("2022-04",months_selected))==1){
+        load(url("https://osf.io/2wy5j/download"))
+      }
+      if (sum(grepl("2022-05",months_selected))==1){
+        load(url("https://osf.io/8uqvt/download"))
+      }
+      if (sum(grepl("2022-06",months_selected))==1){
+        load(url("https://osf.io/e2cav/download"))
+      }
+      if (sum(grepl("2022-07",months_selected))==1){
+        load(url("https://osf.io/b796z/download"))
+      }
+      if (sum(grepl("2022-08",months_selected))==1){
+        load(url("https://osf.io/4gm9u/download"))
+      }
+      if (sum(grepl("2022-09",months_selected))==1){
+        load(url("https://osf.io/qn65d/download"))
+      }
+      if (sum(grepl("2022-10",months_selected))==1){
+        load(url("https://osf.io/huz9t/download"))
+      }
+      if (sum(grepl("2022-11",months_selected))==1){
+        load(url("https://osf.io/54pys/download"))
+      }
+      if (sum(grepl("2022-12",months_selected))==1){
+        load(url("https://osf.io/y69g2/download"))
+      }
+      
+      
+      
+      if (sum(grepl("2023-01",months_selected))==1){
+        load(url("https://osf.io/p2gaj/download"))
+      }
+      if (sum(grepl("2023-02",months_selected))==1){
+        load(url("https://osf.io/u2yk9/download"))
+      }
+      
+      
+      
+      ls(pattern = "clean_tweets*")
+      loaded_months <- ls(pattern = "clean_tweets*")
+      df1 <- do.call("rbind", mget(loaded_months))
+      
+      #df1$date <- df1$`date <- as.Date(created_at)`
+      
+      df1 <- df1[df1$date >= paste(as.character(start_date)),]
+      df1 <- df1[df1$date <= paste(as.character(end_date)),]
+      
+      
+      df1 <- df1[order(df1$created_at), ]
+      df1 
+      
+      url1 <- rep("https://twitter.com/", length(df1$id))
+      url2 <- rep("/status/", length(df1$id))
+      
+      
+      df1$url <- paste(url1,df1$author_id,url2,df1$id,sep="")
+      
+      # "remove_duplicated"       
+      # ,"show_duplicated"
+      
+      # duplicate_tweets <- duplicate_tweets_fun()
+      # 
+      # if (
+      #   input$duplicates == "keep_all"
+      #   #str_detect(clean_box, "clean_plot")
+      # ) 
+      # {
+      #   df1 
+      # } else if (
+      #   input$duplicates == "remove_duplicated"
+      # ) 
+      # {
+      #   df1 <- df1[which(df1$num_dups==1),]
+      # } else if(
+      #   input$duplicates == "show_duplicated"
+      # )
+      # {
+      #   df1 <- df1[which(df1$num_dups>1),]
+      # } 
+      # 
+      mft_boxes <- paste(mft_boxes3(), sep = " " , collapse = '')
+      
+      Author <- `colnames<-`(
+        as.data.table(df1$author_id)
+        , "Author")
+      ID <- `colnames<-`(
+        as.data.table(df1$id)
+        , "ID")
+      link <-  `colnames<-`(
+        as.data.table(df1$url)
+        , "link")
+      Content <- `colnames<-`(
+        as.data.table(df1$text)
+        , "Tweet Content")
+      Metrics <- `colnames<-`(
+        as.data.table(df1$public_metrics[1:4])
+        , c("retweet_count","reply_count","like_count","quote_count"))
+      date_tag  <- `colnames<-`(
+        as.data.table(df1$created_at)
+        , "Date (metata)")
+      date_simple <- `colnames<-`(
+        as.data.table(df1$date)
+        , "Date (simple)")
+      language <- `colnames<-`(
+        as.data.table(df1$lang)
+        , "Language")
+      sentiment_df <- `colnames<-`(
+        as.data.table(df1$meanSentiment)
+        , "Sentiment")
+      care_virtue_df <- `colnames<-`(
+        as.data.table(df1$care.virtue)
+        , "Care-Virtue")
+      care_vice_df <- `colnames<-`(
+        as.data.table(df1$care.vice)
+        , "Care-Vice")
+      fairness_virtue_df <- `colnames<-`(
+        as.data.table(df1$fairness.virtue)
+        , "Fairness-Virtue")
+      fairness_vice_df <- `colnames<-`(
+        as.data.table(df1$fairness.vice)
+        , "Fairness-Vice")
+      loyalty_virtue_df <- `colnames<-`(
+        as.data.table(df1$loyalty.virtue)
+        , "Loyalty-Virtue")
+      loyalty_vice_df <- `colnames<-`(
+        as.data.table(df1$loyalty.vice)
+        , "Loyalty-Vice")
+      authority_virtue_df <- `colnames<-`(
+        as.data.table(df1$authority.virtue)
+        , "Authority-Virtue")
+      authority_vice_df <- `colnames<-`(
+        as.data.table(df1$authority.vice)
+        , "Authority-Vice")
+      sanctity_virtue_df <- `colnames<-`(
+        as.data.table(df1$sanctity.virtue)
+        , "Sanctity-Virtue")
+      sanctity_vice_df <- `colnames<-`(
+        as.data.table(df1$sanctity.vice)
+        , "Sanctity-Vice")
+      
+      list_df_fun <- function(){
+        
+        
+        
+        list.df = " "
+        
+        
+        # if (str_detect(mft_boxes, "author")) { 
+        #   list.df=c(list.df,deparse(substitute(Author)))
+        # }
+        
+        if (str_detect(mft_boxes, "id")) { 
+          list.df=c(list.df,deparse(substitute(ID)))
+        }
+        
+        if (str_detect(mft_boxes, "link")) { 
+          list.df=c(list.df,deparse(substitute(link)))
+        }
+        
+        if (str_detect(mft_boxes, "text")) { 
+          list.df=c(list.df,deparse(substitute(Content)))
+        }
+        
+        if (str_detect(mft_boxes, "public_metrics")) { 
+          list.df=c(list.df,deparse(substitute(Metrics)))
+        }
+        
+        if (str_detect(mft_boxes, "created_at")) { 
+          list.df=c(list.df,deparse(substitute(date_tag)))
+        }
+        
+        if (str_detect(mft_boxes, "date_simple")) {
+          list.df=c(list.df,deparse(substitute(date_simple)))
+        }
+        if (str_detect(mft_boxes, "lang")) {
+          list.df=c(list.df,deparse(substitute(language)))
+        }
+        if (str_detect(mft_boxes, "sentiment")) {
+          list.df=c(list.df,deparse(substitute(sentiment_df)))
+        }
+        if (str_detect(mft_boxes, "care")) {
+          list.df=c(list.df,deparse(substitute(care_virtue_df))
+                    ,       deparse(substitute(care_vice_df))
+                    )
+        }
+        if (str_detect(mft_boxes, "fairness")) {
+          list.df=c(list.df,deparse(substitute(fairness_virtue_df))
+                    ,       deparse(substitute(fairness_vice_df))
+          )
+        }
+        if (str_detect(mft_boxes, "loyalty")) {
+          list.df=c(list.df,deparse(substitute(loyalty_virtue_df))
+                    ,       deparse(substitute(loyalty_vice_df))
+          )
+        }
+        if (str_detect(mft_boxes, "authority")) {
+          list.df=c(list.df,deparse(substitute(authority_virtue_df))
+                    ,       deparse(substitute(authority_vice_df))
+          )
+        }
+        if (str_detect(mft_boxes, "sanctity")) {
+          list.df=c(list.df,deparse(substitute(sanctity_virtue_df))
+                    ,       deparse(substitute(sanctity_vice_df))
+          )
+        }
+        list.df
+      }
+      
+      list.df <- list_df_fun()
+      
+      
+      list.df = list.df[2:length(list.df)] #remove first element 
+      expression = paste0("df_combined = cbind(",paste0( list.df, collapse = ','), paste0(")"))
+      
+      eval(parse(text=expression))
+      
+      df_combined
+    })
+    
+    ##### MFT Plot #####
+    
+    output$plot4 <- renderPlot({
+      
+      load("MFT_overall_long.RData")
+      df3 <- MFT_overall_long
+      
+      start_date6 <- make_start_date6()
+      end_date6 <- make_end_date6()
+      
+      mft_plot_measures_df <- paste(mft_plot_measures1(), sep = " " , collapse = '')
+      
+      #y <- table(df1$date)
+      
+      df3 <- df3[df3$date >= paste(as.character(start_date6)) & df3$date <= paste(as.character(end_date6)),]
+      
+      
+      df3$measure <- factor(df3$measure,
+                           levels = c(
+                             "mean_daily_sentiment",
+                             "care_virtue",
+                             "care_vice",
+                             "fairness_virtue",
+                             "fairness_vice",
+                             "loyalty_virtue",
+                             "loyalty_vice",
+                             "authority_virtue",
+                             "authority_vice",
+                             "sanctity_virtue",
+                             "sanctity_vice"
+                           )
+      )
+      
+      
+      
+      df3$color <- recode(df3$measure
+                          ,"mean_daily_sentiment"="#ffeb3b"
+                          ,"care_virtue" = "#ef5350"
+                          ,"care_vice" = "#ec407a"
+                          ,"fairness_virtue" = "#81c784"
+                          ,"fairness_vice" = "#64ffda"
+                          ,"loyalty_virtue" = "#29b6f6"
+                          ,"loyalty_vice" = "#82b1ff"
+                          ,"authority_virtue" = "#ffa726"
+                          ,"authority_vice" = "#ff7043"
+                          ,"sanctity_virtue" = "#ba68c8"
+                          ,"sanctity_vice" = "#ce93d8"
+      )
+        
+      # levels_df <- levels(df4$measure)
+      # colors_df <- recode(levels_df
+      #                     ,"mean_daily_sentiment"="#ffeb3b"
+      #                     ,"care_virtue" = "#ef5350"
+      #                     ,"care_vice" = "#ec407a"
+      #                     ,"fairness_virtue" = "#81c784"
+      #                     ,"fairness_vice" = "#64ffda"
+      #                     ,"loyalty_virtue" = "#29b6f6"
+      #                     ,"loyalty_vice" = "#82b1ff"
+      #                     ,"authority_virtue" = "#ffa726"
+      #                     ,"authority_vice" = "#ff7043"
+      #                     ,"sanctity_virtue" = "#ba68c8"
+      #                     ,"sanctity_vice" = "#ce93d8"
+      # )
+      
+      mean_daily_sentiment <- df3[which(df3$measure=="mean_daily_sentiment"),]
+      care_virtue <- df3[which(df3$measure=="care_virtue"),]
+      care_vice <- df3[which(df3$measure=="care_vice"),]
+      fairness_virtue <- df3[which(df3$measure=="fairness_virtue"),]
+      fairness_vice <- df3[which(df3$measure=="fairness_vice"),]
+      loyalty_virtue <- df3[which(df3$measure=="loyalty_virtue"),]
+      loyalty_vice <- df3[which(df3$measure=="loyalty_vice"),]
+      authority_virtue <- df3[which(df3$measure=="authority_virtue"),]
+      authority_vice <- df3[which(df3$measure=="authority_vice"),]
+      sanctity_virtue <- df3[which(df3$measure=="sanctity_virtue"),]
+      sanctity_vice <- df3[which(df3$measure=="sanctity_vice"),]
+      
+      
+      
+      list_df_fun <- function(){
+        
+        
+        
+        list.df = " "
+        
+        
+        # if (str_detect(mft_boxes, "author")) { 
+        #   list.df=c(list.df,deparse(substitute(Author)))
+        # }
+        
+        if (str_detect(mft_plot_measures_df, "mean_daily_sentiment")) { 
+          list.df=c(list.df,deparse(substitute(mean_daily_sentiment)))
+        }
+        
+        if (str_detect(mft_plot_measures_df, "care_virtue")) { 
+          list.df=c(list.df,deparse(substitute(care_virtue)))
+        }
+        
+        if (str_detect(mft_plot_measures_df, "care_vice")) { 
+          list.df=c(list.df,deparse(substitute(care_vice)))
+        }
+        
+        if (str_detect(mft_plot_measures_df, "fairness_virtue")) { 
+          list.df=c(list.df,deparse(substitute(fairness_virtue)))
+        }
+        
+        if (str_detect(mft_plot_measures_df, "fairness_vice")) { 
+          list.df=c(list.df,deparse(substitute(fairness_vice)))
+        }
+        
+        if (str_detect(mft_plot_measures_df, "loyalty_virtue")) { 
+          list.df=c(list.df,deparse(substitute(loyalty_virtue)))
+        }
+        
+        if (str_detect(mft_plot_measures_df, "loyalty_vice")) { 
+          list.df=c(list.df,deparse(substitute(loyalty_vice)))
+        }
+        
+        if (str_detect(mft_plot_measures_df, "authority_virtue")) { 
+          list.df=c(list.df,deparse(substitute(authority_virtue)))
+        }
+        
+        if (str_detect(mft_plot_measures_df, "authority_vice")) { 
+          list.df=c(list.df,deparse(substitute(authority_vice)))
+        }
+        
+        if (str_detect(mft_plot_measures_df, "sanctity_virtue")) { 
+          list.df=c(list.df,deparse(substitute(sanctity_virtue)))
+        }
+        
+        if (str_detect(mft_plot_measures_df, "sanctity_vice")) { 
+          list.df=c(list.df,deparse(substitute(sanctity_vice)))
+        }
+        list.df
+      }
+      
+      list.df <- list_df_fun()
+      
+      
+      list.df = list.df[2:length(list.df)] #remove first element 
+      expression = paste0("df4 = rbind(",paste0( list.df, collapse = ','), paste0(")"))
+      
+      eval(parse(text=expression))
+      
+      df4
+      
+      df4$color <- droplevels(df4$color)
+      
+      colors_df <- levels(df4$color)
+     
+      
+      
+      ggplot(df4, aes(date, value, color = measure)) + 
+        scale_color_manual(values = colors_df)+
+        geom_line(linewidth=1)+
+        #geom_line(aes(date, mean_daily_sentiment))+
+        theme_bw()
+      
+      # ggplot(df2, aes(date, !!sym(y_axis), fill = !!sym(fill_v))) + 
+      #   scale_fill_continuous(low = "grey",
+      #                         high = "black",)+
+      #   geom_col()+
+      #   theme_bw()
+      
+      # # generate bins based on input$bins from ui.R
+      # x    <- faithful[, 2]
+      # bins <- seq(min(x), max(x), length.out = input$bins + 1)
+      # 
+      # # draw the histogram with the specified number of bins
+      # hist(x, breaks = bins, col = 'darkgray', border = 'white',
+      #      xlab = 'Waiting time to next eruption (in mins)',
+      #      main = 'Histogram of waiting times')
+    })
     
     ##### Sentiment #####
     
