@@ -232,6 +232,11 @@ ui <- dashboardPage(
                                          label = 'Select Date Range:',
                                          start = "2023-01-01", end = "2023-02-28"
                           ),
+                          
+                          sliderInput("mftlinewidth","Select Line Width:"
+                                      ,  min = .01, max = 2, value = 1
+                                      #, step = 50000
+                          ),
                           checkboxGroupInput("mft_plot_measures","Select Measures",
                                              choiceNames = c(
                                                "mean_daily_sentiment",
@@ -362,6 +367,8 @@ server <- function(input, output) {
     
     make_y_axis <- reactive({input$yaxis})
     make_fill <- reactive({input$fill})
+    
+    make_linewidth <- reactive({input$mftlinewidth})
     
     
     mft_plot_measures1 <- reactive({
@@ -1770,6 +1777,7 @@ server <- function(input, output) {
       
       start_date6 <- make_start_date6()
       end_date6 <- make_end_date6()
+      mft_linewidth <- make_linewidth()
       
       mft_plot_measures_df <- paste(mft_plot_measures1(), sep = " " , collapse = '')
       
@@ -1914,7 +1922,7 @@ server <- function(input, output) {
       
       ggplot(df4, aes(date, value, color = measure)) + 
         scale_color_manual(values = colors_df)+
-        geom_line(linewidth=1)+
+        geom_line(linewidth=mft_linewidth)+
         #geom_line(aes(date, mean_daily_sentiment))+
         theme_bw()
       
